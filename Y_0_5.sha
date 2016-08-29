@@ -6181,22 +6181,23 @@ BEGIN_SDK
   }
   Add(MultiElement,8028774,175,126)
   {
-   link(onEvent1,7230324:doWork2,[(229,132)(229,83)])
+   link(onEvent1,6208095:doEvent1,[])
+   link(onEvent3,13188995:doEvent,[(229,146)(229,174)])
    link(Data1,5777105:Var2,[])
    link(Data2,13052963:Array,[])
-   link(onEvent3,13188995:doEvent,[])
   }
   BEGIN_SDK
     Add(EditMulti,13097786,21,21)
     {
      EventCount=3
-     WorkCount=1
+     WorkCount=2
      DataCount=2
      VarCount=1
      Width=650
      Height=298
      link(doWork1,406733:doEnum,[(129,27)(129,139)])
      link(Var1,406733:Index,[(27,242)(251,242)])
+     link(doWork2,406733:doStop,[(129,34)(129,146)])
     }
     Add(ArrayEnum,406733,238,133)
     {
@@ -6234,9 +6235,9 @@ BEGIN_SDK
     {
     }
   END_SDK
-  Add(DoData,2903010,378,140)
+  Add(DoData,2903010,378,168)
   {
-   link(onEventData,5610470:onNext,[(439,146)(439,27)])
+   link(onEventData,5610470:onNext,[(439,174)(439,27)])
    link(Data,5777105:Var3,[(384,114)])
   }
   Add(GetDataEx,5777105,175,109)
@@ -6257,11 +6258,10 @@ BEGIN_SDK
   {
    link(onIndex,7952991:doValue,[])
   }
-  Add(IndexToChanel,13188995,308,140)
+  Add(IndexToChanel,13188995,308,168)
   {
    Point(Data)
    link(onEvent1,2903010:doData,[])
-   link(onEvent2,5610470:onThos,[(422,153)(422,34)])
    link(Data,7057395:Var2,[])
   }
   Add(Message,12405049,161,210)
@@ -6271,6 +6271,13 @@ BEGIN_SDK
   Add(GetDataEx,7057395,308,119)
   {
    link(Data,7952991:Value,[])
+  }
+  Add(Hub,6208095,238,126)
+  {
+   OutCount=3
+   link(onEvent1,7230324:doWork2,[(264,132)(264,108)(240,108)(240,83)])
+   link(onEvent2,5610470:onThos,[(378,139)(378,34)])
+   link(onEvent3,8028774:doWork2,[(264,146)(264,142)(163,142)(163,139)])
   }
 END_SDK
 Add(GetDataEx,11912080,1939,686)
