@@ -3,7 +3,7 @@ ver(4.04 build 184)
 Add(MainForm,2953706,161,161)
 {
  Width=363
- Height=373
+ Height=403
  Color=16777215
  link(onCreate,6419511:doLoad,[])
 }
@@ -83,7 +83,6 @@ Add(Hub,10189515,455,665)
  link(onEvent1,542470:doLoad,[])
  link(onEvent2,4345691:doClear,[(809,678)(809,790)])
  link(onEvent3,2623398:doEnum,[(487,685)(487,713)])
- link(onEvent4,6419511:doSave,[(481,692)(481,440)(282,440)(282,188)])
 }
 Add(StrMask,10877107,560,707)
 {
@@ -138,6 +137,7 @@ Add(Label,15711690,924,721)
  Left=10
  Top=310
  Width=330
+ Color=16777215
  Font=[MS Sans Serif,8,0,-16777203,1]
  Caption=""
  Point(onMouseUp)
@@ -306,8 +306,8 @@ Add(IndexToChanel,4030396,63,476)
  Point(Index)
  link(onEvent1,14159568:doCompare,[])
  link(onEvent2,11244592:doCompare,[(111,489)(111,587)])
- link(Index,8158132:Value,[(69,401)(1175,401)])
  link(onEvent3,6347792:doWork3,[(270,496)])
+ link(Index,8158132:Value,[(69,401)(1175,401)])
 }
 Add(Memory,8158132,1169,294)
 {
@@ -392,5 +392,35 @@ Add(Hub,5611927,441,609)
 Add(HubEx,12962493,257,483)
 {
  Angle=3
- link(onEvent,2953706:doClose,[(261,339)(149,339)(149,188)])
+ link(onEvent,7027053:doWork3,[(261,339)(149,339)])
+}
+Add(Button,13064711,42,182)
+{
+ Left=10
+ Top=335
+ Width=70
+ Caption="Закрыть"
+ link(onClick,7199063:doWork2,[])
+}
+Add(HubEx,7199063,145,182)
+{
+ link(onEvent,2953706:doClose,[])
+}
+Add(Button,8493887,42,224)
+{
+ Left=90
+ Top=335
+ Width=250
+ Caption="Пометить, как прочитанное, и закрыть"
+ link(onClick,6557545:doEvent1,[])
+}
+Add(Hub,6557545,98,224)
+{
+ link(onEvent1,6419511:doSave,[(214,230)(214,188)])
+ link(onEvent2,7027053:doWork2,[])
+}
+Add(HubEx,7027053,145,231)
+{
+ Angle=3
+ link(onEvent,7199063:doWork3,[])
 }
