@@ -427,28 +427,12 @@ Add(HilightMemo,10640481,770,189)
  link(FileName,12043422:Var,[(783,171)(853,171)])
  link(onMouseUp,1831649:doEvent1,[(828,202)(828,342)])
 }
-Add(Button,12693533,385,203)
-{
- Left=900
- Top=65
- Width=100
- Caption="Удалить"
- link(onClick,6277553:doWork2,[])
-}
-Add(Edit,1098780,770,77)
+Add(Edit,1098780,770,63)
 {
  Left=1015
- Top=40
+ Top=30
  Width=215
  Text=" "
-}
-Add(Button,2600632,385,245)
-{
- Left=900
- Top=90
- Width=100
- Caption="Вставить"
- link(onClick,11816271:doWork2,[])
 }
 Add(DoData,14710012,532,252)
 {
@@ -458,30 +442,6 @@ Add(DoData,14710012,532,252)
 Add(GetDataEx,14293585,567,168)
 {
  link(Data,9861362:Text,[])
-}
-Add(Button,10405200,385,329)
-{
- Left=1015
- Top=90
- Width=100
- Caption="Повторить"
- link(onClick,6175395:doEvent1,[])
-}
-Add(Button,14499861,385,371)
-{
- Left=1015
- Top=65
- Width=100
- Caption="Отменить"
- link(onClick,5494740:doEvent1,[])
-}
-Add(Button,11756674,385,287)
-{
- Left=900
- Top=115
- Width=100
- Caption="Редактировать"
- link(onClick,11974961:doWork2,[])
 }
 Add(ArrayRW,14361479,574,287)
 {
@@ -3215,22 +3175,6 @@ Add(DoData,5245103,924,336)
  link(onEventData,4013569:doWork3,[(970,342)])
  link(Data,10640481:PositionY,[(930,283)(797,283)])
 }
-Add(Button,15650275,385,413)
-{
- Left=1130
- Top=65
- Width=100
- Caption="Открыть..."
- link(onClick,2404317:doWork2,[])
-}
-Add(Button,16718395,385,455)
-{
- Left=1130
- Top=90
- Width=100
- Caption="Сохранить как..."
- link(onClick,14459354:doWork2,[])
-}
 Add(ODialog,11805590,441,413)
 {
  Filter="Проэкт Arduino IDE|*.INO|All|*.*"
@@ -5185,20 +5129,16 @@ Add(IndexToChanel,13159227,1806,301)
 {
  Count=9
  Point(Index)
- link(onEvent1,11816271:doWork3,[(1843,307)(1843,410)(459,410)])
+ link(onEvent1,3228024:doEvent1,[(1843,307)(1843,410)(459,410)(459,251)])
  link(onEvent2,7340017:doEvent2,[(1861,314)(1861,286)(1766,286)(1766,237)])
  link(onEvent3,13306169:doEvent1,[(1843,321)(1843,559)(646,559)(646,538)])
  link(onEvent6,7654163:doData,[(1869,342)(1869,225)(1747,225)(1747,118)])
- link(onEvent8,6277553:doWork3,[(1843,356)(1843,413)(487,413)])
+ link(onEvent8,7471764:doEvent1,[(1843,356)(1843,413)(487,413)(487,209)])
  link(Index,13362004:Var1,[(1812,289)(1770,289)])
 }
 Add(Hub,16474015,1547,217)
 {
  link(onEvent2,15149107:doEvent,[])
-}
-Add(HubEx,6277553,483,203)
-{
- link(onEvent,7471764:doEvent1,[])
 }
 Add(Message,1097228,1785,357)
 {
@@ -5229,10 +5169,6 @@ Add(GetDataEx,13362004,1764,336)
 {
  Angle=3
  link(Data,832728:Value,[(1728,341)])
-}
-Add(HubEx,11816271,455,245)
-{
- link(onEvent,3228024:doEvent1,[])
 }
 Add(Hub,3228024,497,245)
 {
@@ -6277,7 +6213,7 @@ Add(Label,761561,637,77)
 Add(Label,9207632,637,119)
 {
  Left=900
- Top=45
+ Top=35
  Width=105
  Caption="Строка для вставки"
 }
@@ -6722,21 +6658,13 @@ Add(IndexToChanel,11222766,287,490)
 {
  Count=10
  link(onEvent1,5371685:doWork1,[(387,496)(387,1133)])
- link(onEvent2,2404317:doWork3,[(424,503)])
- link(onEvent3,14459354:doWork3,[(431,510)])
+ link(onEvent2,2553187:doExecute,[(424,503)(424,419)(591,419)(591,993)])
+ link(onEvent3,5392655:doWork1,[(431,510)(431,461)(564,461)])
  link(onEvent4,12624766:doWork1,[(655,517)])
  link(onEvent5,5494740:doEvent2,[(415,524)(415,384)])
  link(onEvent6,6175395:doEvent2,[(415,531)(415,342)])
  link(onEvent7,14999158:doEvent1,[(341,538)(341,622)])
  link(onEvent8,7177790:doShellExec,[(394,545)(394,713)])
-}
-Add(HubEx,2404317,420,413)
-{
- link(onEvent,2553187:doExecute,[(591,419)(591,993)])
-}
-Add(HubEx,14459354,427,455)
-{
- link(onEvent,5392655:doWork1,[(564,461)])
 }
 Add(ODialog,2553187,756,987)
 {
