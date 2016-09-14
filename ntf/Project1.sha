@@ -3,8 +3,10 @@ ver(4.04 build 184)
 Add(MainForm,2953706,161,161)
 {
  Width=363
- Height=403
+ Height=252
  Color=16777215
+ BorderStyle=4
+ DragForm=0
  link(onCreate,6419511:doLoad,[])
 }
 Add(HTTP_Get,16338927,406,175)
@@ -13,7 +15,7 @@ Add(HTTP_Get,16338927,406,175)
  link(onDownload,11595876:doEvent1,[])
  link(URL,12206955:Var,[])
 }
-Add(Edit,13802639,322,84)
+Add(Edit,13802639,294,105)
 {
  Left=10
  Top=15
@@ -81,8 +83,9 @@ Add(Hub,10189515,455,665)
 {
  OutCount=4
  link(onEvent1,542470:doLoad,[])
- link(onEvent2,4345691:doClear,[(809,678)(809,790)])
- link(onEvent3,2623398:doEnum,[(487,685)(487,713)])
+ link(onEvent2,4345691:doClear,[(751,678)(751,790)])
+ link(onEvent3,4136507:doWork1,[(609,685)(609,566)])
+ link(onEvent4,2623398:doEnum,[(487,692)(487,713)])
 }
 Add(StrMask,10877107,560,707)
 {
@@ -94,48 +97,48 @@ Add(Hub,15143823,630,714)
 {
  OutCount=4
  link(onEvent1,3208605:doSplit,[])
- link(onEvent3,7377618:doWork2,[(656,734)(656,510)(569,510)(569,419)])
+ link(onEvent3,7377618:doWork2,[(651,734)(651,419)])
 }
 Add(MultiStrData,3208605,672,714)
 {
  Char=" "
  link(onPart2,3717287:doEvent1,[])
 }
-Add(StrList,8639855,882,413)
+Add(StrList,8639855,1253,686)
 {
  FileName="./url_link.url"
  Strings=#18:[InternetShortcut]|7:IDList=|
 }
-Add(Hub,10320943,763,455)
+Add(Hub,10320943,1134,728)
 {
  OutCount=3
- link(onEvent1,2426604:doStrCat,[(784,461)(784,419)])
+ link(onEvent1,2426604:doStrCat,[(1155,734)(1155,692)])
  link(onEvent2,5148494:doData,[])
- link(onEvent3,8639855:doSave,[(854,475)(854,454)])
+ link(onEvent3,8639855:doSave,[(1225,748)(1225,727)])
 }
-Add(DoData,5148494,791,462)
+Add(DoData,5148494,1162,735)
 {
  Data=String()
- link(onEventData,1699605:doWork3,[(837,468)])
+ link(onEventData,1699605:doWork3,[(1208,741)])
 }
-Add(StrCat,2426604,791,413)
+Add(StrCat,2426604,1162,686)
 {
  Str1="URL="
  link(onStrCat,1699605:doWork2,[])
- link(Str2,6514245:Value,[(804,401)(758,401)(758,499)(713,499)])
+ link(Str2,6514245:Value,[(1175,674)(1129,674)(1129,772)(1084,772)])
 }
-Add(HubEx,1699605,833,413)
+Add(HubEx,1699605,1204,686)
 {
  link(onEvent,8639855:doAdd,[])
 }
-Add(WinExec,7177790,1015,721)
+Add(WinExec,7177790,1022,721)
 {
  FileName=".\url_link.url"
 }
 Add(Label,15711690,924,721)
 {
  Left=10
- Top=310
+ Top=170
  Width=330
  Color=16777215
  Font=[MS Sans Serif,8,0,-16777203,1]
@@ -147,14 +150,14 @@ Add(IndexToChanel,3493712,973,721)
 {
  Point(Index)
  link(onEvent2,7177790:doShellExec,[])
- link(Index,8525282:Value,[(979,509)(636,509)])
+ link(Index,8525282:Value,[(979,509)(713,509)])
 }
-Add(ChanelToIndex,7377618,581,406)
+Add(ChanelToIndex,7377618,658,406)
 {
  Count=3
  link(onIndex,8525282:doValue,[])
 }
-Add(Memory,8525282,630,406)
+Add(Memory,8525282,707,406)
 {
 }
 Add(ArrayEnum,2623398,504,707)
@@ -162,19 +165,19 @@ Add(ArrayEnum,2623398,504,707)
  link(onItem,10877107:doCompare,[])
  link(Array,542470:Array,[])
 }
-Add(Memory,6514245,707,455)
+Add(Memory,6514245,1078,728)
 {
  link(onData,10320943:doEvent1,[])
 }
 Add(Hub,3717287,714,721)
 {
- link(onEvent1,9268471:doStrCat,[])
- link(onEvent2,6514245:doValue,[(740,734)(740,531)(695,531)(695,461)])
+ link(onEvent1,9268471:doStrCat,[(738,727)(738,636)])
+ link(onEvent2,6514245:doValue,[])
 }
-Add(StrCat,9268471,868,721)
+Add(StrCat,9268471,749,630)
 {
  Str1="Ссылка: "
- link(onStrCat,4839726:doWork2,[])
+ link(onStrCat,710603:doEvent,[])
 }
 Add(StrMask,1522788,399,371)
 {
@@ -190,7 +193,7 @@ Add(MultiStrData,5457668,448,420)
 }
 Add(DoData,6170838,490,420)
 {
- link(onEventData,2953706:doCaption,[(534,426)(534,296)(142,296)(142,167)])
+ link(onEventData,2953706:doCaption,[(534,426)(534,296)(138,296)(138,167)])
  link(Data,5457668:RemaindStr,[(496,408)(475,408)(475,464)(454,464)])
 }
 Add(StrMask,12159030,651,777)
@@ -213,18 +216,20 @@ Add(DoData,15736414,735,826)
 Add(Hub,5086362,777,826)
 {
  link(onEvent1,4839726:doWork3,[(914,832)])
+ link(onEvent2,4136507:doWork2,[(803,839)(803,705)(725,705)(725,573)])
 }
 Add(HubEx,4839726,910,721)
 {
  link(onEvent,15711690:doText,[])
 }
-Add(RichEdit,4345691,1148,777)
+Add(RichEdit,4345691,1022,777)
 {
  Left=10
  Top=15
  Width=330
- Height=280
+ Height=140
  FileName="./last.msg"
+ Strings=#29:Проверка наличия сообщений...|
  ScrollBars=2
  ReadOnly=0
  ParseLinks=0
@@ -397,7 +402,7 @@ Add(HubEx,12962493,257,483)
 Add(Button,13064711,42,182)
 {
  Left=10
- Top=335
+ Top=195
  Width=70
  Caption="Закрыть"
  link(onClick,7199063:doWork2,[])
@@ -409,7 +414,7 @@ Add(HubEx,7199063,145,182)
 Add(Button,8493887,42,224)
 {
  Left=90
- Top=335
+ Top=195
  Width=250
  Caption="Пометить, как прочитанное, и закрыть"
  link(onClick,6557545:doEvent1,[])
@@ -423,4 +428,30 @@ Add(HubEx,7027053,145,231)
 {
  Angle=3
  link(onEvent,7199063:doWork3,[])
+}
+Add(Charset,6575495,105,119)
+{
+ Type=3
+}
+Add(StyleXP,13146857,161,119)
+{
+}
+Add(IndexToChanel,710603,798,630)
+{
+ Point(Index)
+ link(onEvent1,11556263:doData,[])
+ link(Index,12106096:Value,[])
+}
+Add(DoData,11556263,847,630)
+{
+ link(onEventData,4839726:doWork2,[(895,636)(895,727)])
+ link(Data,9268471:Result,[(853,618)(818,618)(818,678)(755,678)])
+}
+Add(ChanelToIndex,4136507,749,560)
+{
+ Count=3
+ link(onIndex,12106096:doValue,[])
+}
+Add(Memory,12106096,798,560)
+{
 }
