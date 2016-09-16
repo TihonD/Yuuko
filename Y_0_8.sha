@@ -7379,9 +7379,9 @@ Add(FilePartElm,3342286,714,1050)
  link(onPart,6388424:doFileName,[])
  link(FileName,974198:Var,[(720,1038)(786,1038)(786,1069)(853,1069)])
 }
-Add(Hub,7725593,798,987)
+Add(Hub,7725593,812,987)
 {
- InCount=2
+ InCount=3
  link(onEvent1,10287567:doValue,[])
 }
 Add(Dir,4421657,637,1127)
@@ -7737,9 +7737,6 @@ BEGIN_SDK
   }
 END_SDK
 Add(Message,6195058,903,1099)
-{
-}
-Add(Hub,9749170,847,1099)
 {
 }
 Add(MultiElement,16247183,322,1176)
