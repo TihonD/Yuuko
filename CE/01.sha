@@ -1,0 +1,198 @@
+Make(delphi)
+ver(4.04 build 184)
+Add(MainForm,2953706,21,105)
+{
+ Width=1076
+ Height=550
+}
+Add(Edit,7963542,462,147)
+{
+ Left=460
+ Top=145
+ Width=190
+ Text="i=0;i<10;i=i+1"
+ link(onChange,3119318:doSplit,[])
+}
+Add(Edit,12678957,427,259)
+{
+ Left=420
+ Top=300
+}
+Add(Edit,103250,441,322)
+{
+ Left=490
+ Top=300
+}
+Add(Edit,7927378,483,371)
+{
+ Left=550
+ Top=290
+}
+Add(Edit,8070306,609,427)
+{
+ Left=630
+ Top=300
+}
+Add(MultiStrData,3119318,525,147)
+{
+ Count=3
+ link(onPart1,11152655:doSplit,[(569,153)(569,227)(345,227)(345,300)])
+ link(onPart2,13003368:doEvent1,[(569,160)(569,272)(23,272)(23,391)])
+ link(onPart3,8070306:doText,[(583,167)(583,433)])
+}
+Add(MultiStrData,11152655,357,294)
+{
+ Char="="
+ link(onPart1,12678957:doText,[(408,300)(408,265)])
+ link(onPart2,103250:doText,[(415,307)(415,328)])
+}
+Add(StrMask,4943407,70,385)
+{
+ Mask="*<*"
+ link(onFalse,3248101:doCompare,[])
+ link(onTrue,6896478:doEvent1,[(233,398)(233,454)])
+}
+Add(StrMask,3248101,126,385)
+{
+ Mask="*>*"
+ link(onFalse,9032919:doCompare,[])
+ link(onTrue,9378962:doEvent1,[(261,398)(261,496)])
+}
+Add(StrMask,9032919,182,385)
+{
+ Mask="*<*"
+ link(onFalse,4639620:doCompare,[])
+ link(onTrue,16079371:doEvent1,[(289,398)(289,538)])
+}
+Add(StrMask,4639620,238,385)
+{
+ Mask="*>*"
+ link(onFalse,9459276:doCompare,[])
+ link(onTrue,1959019:doEvent1,[(348,398)(348,580)])
+}
+Add(RadioButton,1802923,490,448)
+{
+ Left=210
+ Top=490
+ Caption="<"
+}
+Add(RadioButton,9413440,490,490)
+{
+ Left=210
+ Top=490
+ Caption=">"
+}
+Add(StrMask,9459276,294,385)
+{
+ Mask="*=*"
+ link(onFalse,15161156:doCompare,[])
+ link(onTrue,11045075:doEvent1,[(376,398)(376,622)])
+}
+Add(RadioButton,11712063,490,532)
+{
+ Left=210
+ Top=490
+ Caption="<="
+}
+Add(RadioButton,7719297,490,574)
+{
+ Left=210
+ Top=490
+ Caption=">="
+}
+Add(Hub,6896478,427,448)
+{
+ link(onEvent1,1802923:doSelect,[])
+ link(onEvent2,8602183:doData,[(469,461)(469,713)])
+}
+Add(Hub,9378962,427,490)
+{
+ link(onEvent1,9413440:doSelect,[])
+ link(onEvent2,1816376:doData,[(469,503)(469,755)])
+}
+Add(Hub,16079371,427,532)
+{
+ link(onEvent1,11712063:doSelect,[])
+ link(onEvent2,4748966:doWork1,[(465,545)])
+}
+Add(RadioButton,16290477,490,616)
+{
+ Left=210
+ Top=490
+ Caption="="
+}
+Add(RadioButton,15980587,490,658)
+{
+ Left=210
+ Top=490
+ Caption="!="
+}
+Add(StrMask,15161156,350,385)
+{
+ Mask="*=*"
+ link(onTrue,2687550:doEvent1,[(404,398)(404,664)])
+}
+Add(Hub,1959019,427,574)
+{
+ link(onEvent1,7719297:doSelect,[])
+ link(onEvent2,4748966:doWork2,[])
+}
+Add(Hub,11045075,427,616)
+{
+ link(onEvent1,16290477:doSelect,[])
+ link(onEvent2,1470927:doWork2,[])
+}
+Add(Hub,2687550,427,658)
+{
+ link(onEvent1,15980587:doSelect,[])
+ link(onEvent2,15828623:doWork2,[])
+}
+Add(DoData,8602183,490,707)
+{
+ Data=String(<)
+ link(onEventData,4217752:doWork1,[(536,713)])
+}
+Add(DoData,1816376,490,749)
+{
+ Data=String(>)
+ link(onEventData,4217752:doWork2,[])
+}
+Add(DoData,9770947,490,791)
+{
+ Data=String(=)
+ link(onEventData,4217752:doWork3,[(536,797)])
+}
+Add(HubEx,15828623,461,665)
+{
+ Angle=1
+ link(onEvent,9770947:doData,[(465,797)])
+}
+Add(HubEx,1470927,461,623)
+{
+ Angle=1
+ link(onEvent,15828623:doWork1,[])
+}
+Add(HubEx,4748966,461,581)
+{
+ Angle=1
+ link(onEvent,1470927:doWork1,[])
+}
+Add(Memory,4062651,553,749)
+{
+ link(onData,2204972:doChar,[])
+}
+Add(HubEx,4217752,532,749)
+{
+ link(onEvent,4062651:doValue,[])
+}
+Add(MultiStrData,2204972,616,742)
+{
+ Char="="
+ Point(doChar)
+ link(onPart2,7927378:doText,[(660,755)(660,566)(471,566)(471,377)])
+}
+Add(Hub,13003368,35,385)
+{
+ link(onEvent1,4943407:doCompare,[])
+ link(onEvent2,2204972:doSplit,[(333,398)(333,748)])
+}
