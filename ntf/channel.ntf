@@ -1,4 +1,7 @@
-<html><head><title>Document Error: Site or Page Not Found</title></head>
-		<body><h2>Access Error: Site or Page Not Found</h2>
-		<p>Cannot open URL</p></body></html>
-
+ntfv 1
+ntf_renew http://TihonD.RU/notifyer/download.php
+ntf_reload http://TihonD.RU/notifyer/reload/reload_v1.rld
+message 2
+url http://TihonD.RU/notifyer/2/
+name EducationRobots.RU
+method last
