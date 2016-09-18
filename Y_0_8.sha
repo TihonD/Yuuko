@@ -1318,7 +1318,7 @@ BEGIN_SDK
   Add(DoData,1572869,378,301)
   {
    Data=String(delay(500);)
-   link(onEventData,5978589:doEvent2,[(460,307)(460,307)])
+   link(onEventData,5978589:doEvent2,[])
   }
   Add(Informer,4626418,301,210)
   {
@@ -1425,6 +1425,8 @@ BEGIN_SDK
      Top=15
      Width=385
      Text="0"
+     Point(onMouseUp)
+     Point(onKillFocus)
      link(onChange,16075568:doWork2,[(628,391)(628,398)])
     }
     Add(FormatStr,15923484,847,385)
@@ -1671,6 +1673,8 @@ BEGIN_SDK
      Top=110
      Width=385
      Text="0"
+     Point(onMouseUp)
+     Point(onKillFocus)
      link(onChange,16075568:doWork4,[(628,622)(628,412)])
     }
     Add(MultiStrData,1411622,490,616)
@@ -1715,7 +1719,6 @@ BEGIN_SDK
     }
     Add(Memory,8665817,560,308)
     {
-     link(onData,13614021:doEvent,[])
     }
     Add(HubEx,7142621,651,476)
     {
@@ -1779,6 +1782,8 @@ BEGIN_SDK
      Top=145
      Width=385
      Text="0"
+     Point(onMouseUp)
+     Point(onKillFocus)
      link(onChange,16075568:doWork5,[(625,713)(625,419)])
      link(Str,4262323:RemaindStr,[(587,695)(538,695)(538,751)(489,751)])
     }
@@ -1907,7 +1912,7 @@ BEGIN_SDK
     Add(Edit,9861362,588,385)
     {
      Left=170
-     Top=20
+     Top=15
      Width=385
      Visible=1
      Text="0"
@@ -1940,7 +1945,7 @@ BEGIN_SDK
     {
      Left=15
      Top=15
-     Width=200
+     Width=150
      Caption="Начальная настройка"
      link(onSelect,14817402:doEvent1,[])
     }
@@ -2203,7 +2208,6 @@ BEGIN_SDK
     }
     Add(Memory,8665817,560,308)
     {
-     link(onData,13614021:doEvent,[])
     }
     Add(HubEx,3739329,658,287)
     {
@@ -3723,7 +3727,6 @@ BEGIN_SDK
     }
     Add(Memory,8665817,595,168)
     {
-     link(onData,13614021:doEvent,[])
     }
     Add(HubEx,7142621,735,336)
     {
@@ -3877,7 +3880,7 @@ BEGIN_SDK
      link(onEvent1,12359483:doWork2,[])
      link(onEvent2,14387480:doEvent2,[(756,692)(756,258)])
     }
-    Add(Button,183825,322,455)
+    Add(Button,183825,315,455)
     {
      Left=535
      Top=50
@@ -4303,7 +4306,7 @@ BEGIN_SDK
   }
   Add(StrMask,3550699,637,1176)
   {
-   Mask="void setup() {"
+   Mask="*Serial*"
    link(onFalse,11220758:doValue,[(698,1182)(698,1254)(485,1254)(485,811)])
    link(onTrue,8760484:doEvent3,[(674,1189)(674,1119)])
    link(Str,8850181:Var2,[(643,1170)(608,1170)])
@@ -4358,9 +4361,9 @@ BEGIN_SDK
     }
     Add(Edit,9861362,588,385)
     {
-     Left=210
+     Left=170
      Top=15
-     Width=345
+     Width=385
      Text="0"
      link(onChange,16075568:doWork2,[(628,391)(628,398)])
     }
@@ -4378,19 +4381,19 @@ BEGIN_SDK
      Visible=1
      Caption="Условие:"
     }
-    Add(RadioButton,7245395,679,245)
+    Add(RadioButton,7245395,657,245)
     {
      Left=15
      Top=45
-     Width=185
-     Caption="Источник опорного напряжения"
+     Width=135
+     Caption="Опорное напряжение"
      link(onSelect,16480660:doEvent1,[])
     }
     Add(RadioButton,2103263,679,287)
     {
      Left=15
      Top=15
-     Width=185
+     Width=135
      Caption="База случайных чисел"
      link(onSelect,14817402:doEvent1,[])
     }
@@ -4512,7 +4515,7 @@ BEGIN_SDK
     {
      Left=15
      Top=110
-     Width=150
+     Width=130
      Caption="Включить USART"
      link(onSelect,11419277:doEvent1,[])
     }
@@ -4600,9 +4603,9 @@ BEGIN_SDK
     }
     Add(Edit,12154569,588,616)
     {
-     Left=265
+     Left=225
      Top=105
-     Width=125
+     Width=100
      Text="0"
      link(onChange,16075568:doWork4,[(628,622)(628,412)])
     }
@@ -4649,7 +4652,6 @@ BEGIN_SDK
     }
     Add(Memory,8665817,560,308)
     {
-     link(onData,13614021:doEvent,[])
     }
     Add(HubEx,7142621,651,476)
     {
@@ -4676,7 +4678,7 @@ BEGIN_SDK
     {
      Left=15
      Top=145
-     Width=150
+     Width=135
      Caption="Отправить по USART"
      link(onSelect,11197553:doEvent1,[])
     }
@@ -4763,9 +4765,9 @@ BEGIN_SDK
     }
     Add(ComboBox,8647993,917,147)
     {
-     Left=210
+     Left=170
      Top=45
-     Width=345
+     Width=385
      Height=21
      Strings=#25:Напряжение питания (AVCC)|10:Внутренний|39:Внутренний 1,1 В (ATMega128, ATMega256)|40:Внутренний 2,56 В (ATMega128, ATMega256)|14:Внешний (AREF)|
      Text=""
@@ -4843,16 +4845,16 @@ BEGIN_SDK
     }
     Add(Label,8985648,679,616)
     {
-     Left=210
+     Left=170
      Top=110
-     Width=55
+     Width=30
      Caption="Скорость:"
     }
     Add(Label,4627450,728,616)
     {
-     Left=395
+     Left=355
      Top=110
-     Width=90
+     Width=65
      Caption="бод (бит/с)"
     }
     Add(MultiStrData,7770000,490,707)
@@ -5618,7 +5620,7 @@ Add(GetDataEx,14781095,1372,686)
 }
 Add(Hub,4954396,2625,749)
 {
- InCount=14
+ InCount=15
  link(onEvent1,3152334:doWork3,[(2722,755)])
 }
 Add(StrMask,11284889,1456,714)
@@ -10220,7 +10222,7 @@ END_SDK
 Add(StrMask,2161221,2289,714)
 {
  Mask="*analogReference*"
- link(onFalse,6710229:doWork1,[])
+ link(onFalse,15577501:doCompare,[])
  link(onTrue,9604794:doWork1,[(2329,727)(2329,839)])
  link(Str,15474305:Var2,[])
 }
@@ -10242,8 +10244,8 @@ Add(GetDataEx,2807981,2261,644)
 Add(MultiElement,9006603,2415,840)
 {
  link(onEvent1,4954396:doEvent14,[])
- link(Data1,13614122:Var3,[(2421,649)])
- link(Data2,15952511:Var3,[(2428,691)])
+ link(Data1,5591073:Var2,[])
+ link(Data2,11062201:Var2,[])
 }
 BEGIN_SDK
   Add(EditMulti,14715207,21,21)
@@ -10269,8 +10271,8 @@ BEGIN_SDK
   {
    rX=10
    rY=10
-   Color=32768
-   BgColor=32768
+   Color=32896
+   BgColor=32896
    Style=1
    Point(Point1)
    Point(Point2)
@@ -10508,6 +10510,7 @@ END_SDK
 Add(StrMask,15577501,2366,714)
 {
  Mask="*RandomSeed*"
+ link(onFalse,16529961:doCompare,[])
  link(onTrue,9006603:doWork1,[(2406,727)(2406,846)])
  link(Str,15952511:Var2,[])
 }
@@ -10525,4 +10528,313 @@ Add(GetDataEx,15952511,2366,686)
 {
  Angle=3
  link(Data,14383567:Var3,[])
+}
+Add(MultiElement,5974629,2492,847)
+{
+ link(onEvent1,4954396:doEvent15,[])
+ link(Data1,5591073:Var3,[(2498,649)])
+ link(Data2,7441032:Var3,[(2505,691)])
+}
+BEGIN_SDK
+  Add(EditMulti,14715207,21,21)
+  {
+   EventCount=1
+   WorkCount=1
+   DataCount=2
+   Width=1245
+   Height=823
+   link(doWork1,15970683:doSplit,[(63,27)(63,517)])
+  }
+  Add(MultiStrData,4170678,231,371)
+  {
+   Char="/"
+   Count=1
+   link(onPart1,14994772:doSplit,[])
+  }
+  Add(MultiStrData,15970683,105,511)
+  {
+   Char="."
+   link(Str,14715207:Data2,[(111,270)(34,270)])
+   link(onPart2,8338615:doEvent1,[])
+  }
+  Add(Img_Rectangle,5024875,539,455)
+  {
+   rX=10
+   rY=10
+   Color=15793151
+   BgColor=15793151
+   Style=1
+   Point(Point1)
+   Point(Point2)
+   link(onDraw,6021134:doWork3,[(576,461)])
+   link(Bitmap,12159146:Var2,[])
+   link(Point1,10888781:Point,[])
+   link(Point2,15962377:Point,[(566,408)(608,408)])
+  }
+  Add(PointXY,10888781,553,266)
+  {
+   link(X,4704462:Var2,[])
+   link(Y,1764662:Var2,[])
+  }
+  Add(PointXY,15962377,602,266)
+  {
+   link(X,14916211:Result,[])
+   link(Y,7443005:Var1,[(615,257)])
+  }
+  Add(GlobalVar,11281756,553,98)
+  {
+   Name="BlockH"
+   Data=Integer(30)
+  }
+  Add(GlobalVar,12522541,637,98)
+  {
+   Name="BlockL"
+   Data=Integer(350)
+  }
+  Add(GlobalVar,13941832,714,98)
+  {
+   Name="BlockTab"
+   Data=Integer(35)
+  }
+  Add(Math,15600355,504,154)
+  {
+   OpType=2
+   link(onResult,9948732:doOperation,[])
+   link(Op1,2144258:Var,[(510,105)(727,105)])
+   link(Op2,13941832:Var,[(517,133)(720,133)])
+  }
+  Add(GlobalVar,7769929,483,56)
+  {
+   Name="CurY"
+  }
+  Add(GlobalVar,2144258,721,63)
+  {
+   Name="CurTab"
+  }
+  Add(Math,14916211,602,154)
+  {
+   link(onResult,16582385:doOperation,[])
+   link(Op1,14901987:Var1,[(608,149)(585,149)])
+   link(Op2,12522541:Var,[(615,133)(643,133)])
+  }
+  Add(GetDataEx,4704462,553,238)
+  {
+   link(Data,9948732:Result,[])
+  }
+  Add(Math,6556490,700,154)
+  {
+   link(onResult,5024875:doDraw,[(758,160)(758,335)(527,335)(527,461)])
+   link(Op1,11672775:Var1,[(706,149)(610,149)])
+   link(Op2,11281756:Var,[(713,133)(559,133)])
+  }
+  Add(GetDataEx,1764662,560,245)
+  {
+   link(Data,14592406:Result,[(566,240)(468,240)])
+  }
+  Add(FormatStr,11883111,532,532)
+  {
+   DataCount=1
+   Mask="Включить USART, скорость %1 бод (бит/с)"
+   link(onFString,2247518:doWork2,[])
+   link(Str1,3769922:Value,[(538,502)(335,502)])
+  }
+  Add(Memory,3769922,329,441)
+  {
+   Point(Data)
+   link(onData,4799228:doEvent1,[])
+  }
+  Add(Hub,4799228,371,441)
+  {
+   OutCount=4
+   link(onEvent1,14592406:doOperation,[(420,447)(420,160)])
+   link(onEvent3,13594087:doEvent,[(457,461)(457,538)])
+   link(onEvent4,1925739:doData,[(397,468)(397,503)(366,503)(366,538)])
+  }
+  Add(Img_Text,1903072,749,532)
+  {
+   Font=[Neucha,12,0,0,204]
+   Point(X)
+   Point(Y)
+   link(onDraw,6021134:doWork2,[(793,538)(793,303)])
+   link(Bitmap,12159146:Var3,[(755,327)])
+   link(Text,12752962:Value,[(762,520)(646,520)(646,576)(615,576)])
+   link(X,7586409:Result,[(769,520)(717,520)(717,576)(664,576)])
+   link(Y,8341674:Result,[(776,520)(741,520)(741,576)(706,576)])
+  }
+  Add(GetDataEx,12159146,539,322)
+  {
+   Angle=3
+   link(Data,14715207:Data1,[(27,327)])
+  }
+  Add(Memory,12752962,609,532)
+  {
+   link(onData,7586409:doOperation,[])
+  }
+  Add(DoData,1925739,378,532)
+  {
+   link(onEventData,7769929:doValue,[(446,538)(446,62)])
+   link(Data,7443005:Var2,[(384,393)(706,393)])
+  }
+  Add(GetDataEx,7443005,700,252)
+  {
+   link(Data,6556490:Result,[])
+  }
+  Add(Math,7586409,658,532)
+  {
+   Op2=5
+   link(onResult,8341674:doOperation,[])
+   link(Op1,14901987:Var3,[(664,243)])
+  }
+  Add(Math,8341674,700,532)
+  {
+   Op2=5
+   link(onResult,1903072:doDraw,[])
+   link(Op1,11672775:Var3,[(706,250)])
+  }
+  Add(GetDataEx,14901987,579,238)
+  {
+   Angle=3
+   link(Data,4704462:Var3,[])
+  }
+  Add(GetDataEx,11672775,604,245)
+  {
+   Angle=3
+   link(Data,1764662:Var3,[])
+  }
+  Add(HubEx,6021134,572,297)
+  {
+   Angle=2
+   link(onEvent,14715207:onEvent1,[(567,303)(567,27)])
+  }
+  Add(Math,14592406,462,154)
+  {
+   Op2=5
+   link(onResult,15600355:doOperation,[])
+   link(Op1,7769929:Var,[(468,112)(489,112)])
+  }
+  Add(Math,16582385,651,154)
+  {
+   Op2=5
+   link(onResult,6556490:doOperation,[])
+  }
+  Add(Math,9948732,553,154)
+  {
+   Op2=5
+   link(onResult,14916211:doOperation,[])
+   link(Op1,15600355:Result,[(559,142)(535,142)(535,198)(510,198)])
+  }
+  Add(MultiStrData,14994772,280,371)
+  {
+   Char="/"
+   Count=1
+   link(Str,4170678:RemaindStr,[(286,359)(262,359)(262,415)(237,415)])
+  }
+  Add(MultiStrData,16678844,210,525)
+  {
+   Char="("
+   Count=1
+   link(onPart1,5166779:doSplit,[])
+  }
+  Add(MultiStrData,5166779,259,525)
+  {
+   Char=")"
+   Count=1
+   link(Str,16678844:RemaindStr,[(265,513)(241,513)(241,569)(216,569)])
+   link(onPart1,3769922:doValue,[(303,531)(303,447)])
+  }
+  Add(Memory,12195915,154,371)
+  {
+  }
+  Add(ChanelToIndex,10538713,469,700)
+  {
+   Count=5
+   link(onIndex,14796400:doValue,[])
+  }
+  Add(StrMask,15213723,245,658)
+  {
+   Mask="*begin*"
+   link(onFalse,8740306:doCompare,[])
+   link(onTrue,10538713:doWork1,[(345,671)(345,706)])
+  }
+  Add(StrMask,16465318,371,658)
+  {
+   Mask="*INTERNAL*"
+   link(onFalse,8070489:doCompare,[])
+  }
+  Add(StrMask,8740306,287,658)
+  {
+   Mask="*end*"
+   link(onFalse,11730288:doCompare,[])
+   link(onTrue,10538713:doWork2,[(394,671)(394,713)])
+  }
+  Add(StrMask,11730288,329,658)
+  {
+   Mask="*print*"
+   link(onFalse,16465318:doCompare,[])
+   link(onTrue,10538713:doWork3,[(415,671)(415,720)])
+  }
+  Add(StrMask,8070489,413,658)
+  {
+   Mask="*EXTERNAL*"
+  }
+  Add(Memory,14796400,518,700)
+  {
+  }
+  Add(Hub,8338615,161,518)
+  {
+   link(onEvent1,15213723:doCompare,[(190,524)(190,664)])
+   link(onEvent2,16678844:doSplit,[])
+  }
+  Add(FormatStr,8396883,532,581)
+  {
+   DataCount=1
+   Mask="Выключить USART"
+   link(onFString,12221975:doWork2,[])
+  }
+  Add(IndexToChanel,13594087,476,532)
+  {
+   Count=3
+   Point(Index)
+   link(onEvent1,11883111:doString,[])
+   link(onEvent2,8396883:doString,[(520,545)(520,587)])
+   link(Index,14796400:Value,[(482,520)(503,520)(503,744)(524,744)])
+   link(onEvent3,7384724:doString,[(520,552)(520,636)])
+  }
+  Add(HubEx,2247518,581,532)
+  {
+   link(onEvent,12752962:doValue,[])
+  }
+  Add(FormatStr,7384724,532,630)
+  {
+   DataCount=1
+   Mask="Отправить %1"
+   link(onFString,12221975:doWork3,[(585,636)])
+  }
+  Add(HubEx,12221975,581,581)
+  {
+   Angle=3
+   link(onEvent,2247518:doWork3,[])
+  }
+END_SDK
+Add(StrMask,16529961,2443,714)
+{
+ Mask="*Serial*"
+ link(onFalse,6710229:doWork1,[])
+ link(onTrue,5974629:doWork1,[(2483,727)(2483,853)])
+ link(Str,7441032:Var2,[])
+}
+Add(GetDataEx,5591073,2415,644)
+{
+ Angle=3
+ link(Data,13614122:Var3,[])
+}
+Add(GetDataEx,11062201,2422,686)
+{
+ Angle=3
+ link(Data,15952511:Var3,[])
+}
+Add(GetDataEx,7441032,2443,686)
+{
+ Angle=3
+ link(Data,11062201:Var3,[])
 }
