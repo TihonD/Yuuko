@@ -9353,7 +9353,7 @@ Add(HubEx,12463580,418,1197)
 Add(Application,6631103,504,1204)
 {
 }
-Add(Hub,9075678,462,1246)
+Add(Hub,9075678,469,1246)
 {
  link(onEvent1,4277367:doWork3,[(586,1252)])
  link(onEvent2,3764126:doEnum,[])
@@ -11412,58 +11412,62 @@ Add(GetDataEx,7441032,2443,686)
  Angle=3
  link(Data,11062201:Var3,[])
 }
-Add(MultiElementEx,7629283,420,1246)
+Add(MultiElementEx,7629283,427,1246)
 {
  link(onLoad,9075678:doEvent1,[])
 }
 BEGIN_SDK
   Add(EditMultiEx,6493711,21,21)
   {
-   WorkCount=#6:doLoad|6:doSave|
+   WorkCount=#6:doLoad|6:doSave|9:doDefault|
    EventCount=#6:onLoad|
-   Width=580
-   Height=333
+   Width=902
+   Height=578
    link(doLoad,10047292:doStrCat,[(109,27)(109,132)])
    link(doSave,283596:doEvent1,[(77,34)(77,202)])
+   link(doDefault,5589506:doWork1,[(137,41)])
   }
-  Add(GlobalVar,7435246,308,70)
+  Add(GlobalVar,7435246,196,490)
   {
    Name="BlockH"
+   link(onValue,2247765:doData,[])
   }
-  Add(GlobalVar,13645977,392,70)
+  Add(GlobalVar,13645977,308,490)
   {
    Name="BlockL"
+   link(onValue,8590933:doData,[])
   }
-  Add(GlobalVar,15842356,469,70)
+  Add(GlobalVar,15842356,413,490)
   {
    Name="BlockTab"
+   link(onValue,13902711:doData,[])
   }
   Add(GVarContainer,15907725,196,189)
   {
    Section="Blocks"
    FilleName=".\settings.ini"
    VarList=#6:BlockH|6:BlockL|8:BlockTab|
-   link(onLoad,2908129:doLoad,[(240,195)(240,223)])
+   link(onLoad,2908129:doLoad,[(236,195)(236,223)])
    link(FilaName,6863611:Var2,[])
   }
   Add(StrCat,10047292,196,126)
   {
    Str2="settings.ini"
-   link(onStrCat,15907725:doLoad,[(240,132)(240,164)(184,164)(184,195)])
+   link(onStrCat,5011277:doWork1,[(240,132)(240,164)(184,164)])
    link(Str1,9906184:Var2,[])
   }
   Add(Dir,11927660,196,77)
   {
   }
-  Add(GVarContainer,2908129,252,217)
+  Add(GVarContainer,2908129,245,217)
   {
    Section="Ntf"
    FilleName=".\settings.ini"
    VarList=#3:Ntf|
-   link(onLoad,786287:doEvent,[])
-   link(FilaName,6863611:Var3,[(265,173)])
+   link(onLoad,11004758:doLoad,[(285,223)(285,265)])
+   link(FilaName,7395584:Var2,[])
   }
-  Add(GlobalVar,8838335,308,98)
+  Add(GlobalVar,8838335,476,182)
   {
    Name="Ntf"
    Data=Integer(1)
@@ -11475,54 +11479,137 @@ BEGIN_SDK
   }
   Add(Hub,283596,133,196)
   {
+   InCount=2
    OutCount=3
-   link(onEvent2,2908129:doSave,[(183,209)(183,230)])
-   link(onEvent3,15907725:doSave,[(171,216)(171,202)])
+   link(onEvent1,15907725:doSave,[])
+   link(onEvent2,2908129:doSave,[(179,209)(179,230)])
+   link(onEvent3,11004758:doSave,[(174,216)(174,272)])
   }
-  Add(IndexToChanel,786287,308,217)
+  Add(IndexToChanel,786287,476,217)
   {
    Point(Index)
    link(onEvent1,9002340:doWork2,[])
-   link(onEvent2,5088223:doEvent1,[(348,230)(348,244)])
+   link(onEvent2,5088223:doEvent1,[(516,230)(516,244)])
    link(Index,8838335:Var,[])
   }
-  Add(Hub,5088223,357,238)
+  Add(Hub,5088223,525,238)
   {
    link(onEvent1,9392647:doStrCat,[])
-   link(onEvent2,9002340:doWork3,[(442,251)])
+   link(onEvent2,9002340:doWork3,[(610,251)])
   }
-  Add(HubEx,9002340,438,217)
+  Add(HubEx,9002340,606,217)
   {
    Angle=3
-   link(onEvent,6493711:onLoad,[(442,27)])
+   link(onEvent,6493711:onLoad,[(610,27)])
   }
-  Add(WinExec,13426081,476,238)
+  Add(WinExec,13426081,644,238)
   {
    RunEvent=1
-   link(FileName,9392647:Result,[(482,226)(444,226)(444,282)(405,282)])
+   link(FileName,9392647:Result,[(650,226)(612,226)(612,282)(573,282)])
   }
-  Add(StrCat,9392647,399,238)
+  Add(StrCat,9392647,567,238)
   {
    Str2="MonoNTF\NTF.exe"
    link(onStrCat,13426081:doExec,[])
-   link(Str1,9906184:Var3,[(405,117)])
+   link(Str1,9906184:Var3,[(573,117)])
   }
   Add(GetDataEx,9906184,196,112)
   {
    link(Data,11927660:CurrentDir,[])
   }
-  Add(Message,14440355,462,294)
+  Add(Message,14440355,154,532)
   {
+   Message="Файл настроек отсутствовал или был повреждён.\r\nВосстановление прошло успешно."
+   Caption="Восстановление"
+   Icon=4
+  }
+  Add(GlobalVar,9557451,532,490)
+  {
+   Name="Ntf"
+   Data=Integer(1)
+   link(onValue,11107543:doData,[])
+  }
+  Add(GVarContainer,11004758,294,259)
+  {
+   Section="Sys"
+   FilleName=".\settings.ini"
+   VarList=#5:Exist|
+   link(onLoad,15483013:doEvent,[])
+   link(FilaName,7395584:Var3,[(307,173)])
+  }
+  Add(GetDataEx,7395584,252,168)
+  {
+   Angle=3
+   link(Data,6863611:Var3,[])
+  }
+  Add(GlobalVar,7937266,343,224)
+  {
+   Name="Exist"
+   Data=Integer(1)
+  }
+  Add(IndexToChanel,15483013,343,259)
+  {
+   Point(Index)
+   link(onEvent1,3935668:doEvent1,[(387,265)(387,381)(100,381)(100,496)])
+   link(onEvent2,786287:doEvent,[(425,272)(425,223)])
+   link(Index,7937266:Var,[])
+  }
+  Add(DoData,9215941,154,490)
+  {
+   Data=Integer(30)
+   link(onEventData,7435246:doValue,[])
+  }
+  Add(DoData,2247765,266,490)
+  {
+   Data=Integer(350)
+   link(onEventData,13645977:doValue,[])
+  }
+  Add(DoData,8590933,371,490)
+  {
+   Data=Integer(35)
+   link(onEventData,15842356:doValue,[])
+  }
+  Add(DoData,13902711,490,490)
+  {
+   Data=Integer(1)
+   link(onEventData,9557451:doValue,[])
+  }
+  Add(DoData,11107543,574,490)
+  {
+   Data=Integer(1)
+   link(onEventData,15565368:doValue,[])
+  }
+  Add(GlobalVar,15565368,616,490)
+  {
+   Name="Exist"
+   Data=Integer(1)
+   link(onValue,283596:doEvent2,[(670,496)(670,352)(121,352)(121,209)])
+  }
+  Add(Hub,3935668,112,490)
+  {
+   OutCount=3
+   link(onEvent1,5589506:doWork2,[])
+   link(onEvent2,14440355:doMessage,[(140,503)(140,538)])
+   link(onEvent3,5011277:doWork3,[(184,510)])
+  }
+  Add(HubEx,5589506,133,490)
+  {
+   link(onEvent,9215941:doData,[])
+  }
+  Add(HubEx,5011277,180,189)
+  {
+   link(onEvent,15907725:doLoad,[])
   }
 END_SDK
 Add(ChildForm,9190943,343,1253)
 {
- link(onEvent1,11235452:doEvent1,[])
+ link(onEvent1,11235452:doEvent1,[(386,1259)(386,1280)])
+ link(onEvent2,7305762:doEvent1,[(383,1266)(383,1308)])
 }
 BEGIN_SDK
   Add(EditMulti,3065754,21,21)
   {
-   EventCount=1
+   EventCount=2
    WorkCount=1
    Width=678
    Height=515
@@ -11533,7 +11620,7 @@ BEGIN_SDK
    Left=35
    Top=105
    Width=250
-   Height=209
+   Height=238
    Visible=1
    Caption="Настройки"
    Point(doVisible)
@@ -11583,7 +11670,7 @@ BEGIN_SDK
    Top=135
    Width=85
    Caption="Отменить"
-   link(onClick,5466512:doEvent2,[(506,447)(506,342)(191,342)(191,237)])
+   link(onClick,15081262:doWork3,[(506,447)])
   }
   Add(Edit,10612916,266,161)
   {
@@ -11636,11 +11723,29 @@ BEGIN_SDK
    Width=160
    Caption="Горизонтальный отступ, пикс."
   }
+  Add(Button,4429308,462,483)
+  {
+   Left=10
+   Top=165
+   Width=215
+   Caption="Настроить по умолчанию"
+   link(onClick,7839017:doEvent1,[])
+  }
+  Add(Hub,7839017,525,483)
+  {
+   link(onEvent1,3065754:onEvent2,[(619,489)(619,34)])
+   link(onEvent2,15081262:doWork2,[(551,496)(551,342)])
+  }
+  Add(HubEx,15081262,502,336)
+  {
+   Angle=2
+   link(onEvent,5466512:doEvent2,[(191,342)(191,237)])
+  }
 END_SDK
-Add(Hub,11235452,392,1253)
+Add(Hub,11235452,392,1274)
 {
- link(onEvent1,7629283:doSave,[])
- link(onEvent2,3536864:doEvent3,[(676,1266)(676,587)])
+ link(onEvent1,7629283:doSave,[(411,1280)(411,1259)])
+ link(onEvent2,12847154:doWork2,[])
 }
 Add(WinExec,11869804,350,693)
 {
@@ -11649,4 +11754,13 @@ Add(WinExec,11869804,350,693)
 Add(WinExec,1920160,350,742)
 {
  FileName=".\URL\about.html"
+}
+Add(Hub,7305762,392,1302)
+{
+ link(onEvent1,7629283:doDefault,[(416,1308)(416,1266)])
+ link(onEvent2,12847154:doWork3,[(438,1315)])
+}
+Add(HubEx,12847154,434,1281)
+{
+ link(onEvent,3536864:doEvent3,[(676,1287)(676,587)])
 }
