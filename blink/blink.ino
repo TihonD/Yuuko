@@ -1,12 +1,15 @@
 //Пример программы. Мигание светодиодом.
 //Светодиод подключен к линии №15.
-#define LED 15
 void setup() {
-pinMode(LED, OUTPUT);
+//Устанавливаем линию порта на выход
+pinMode(15, OUTPUT);
 }
 void loop() {
-digitalWrite(LED, HIGH);
+//Зажигаем светодиод на полсекунды
+digitalWrite(15, HIGH);
 delay(1000);
-digitalWrite(LED, LOW);
+//Тушим светодиод на полсекунды
+digitalWrite(15, LOW);
 delay(1000);
+//И продолжаем, пока есть напряжение. ^__^
 }
