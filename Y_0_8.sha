@@ -1,5 +1,5 @@
 Make(delphi)
-ver(4.04 build 184)
+ver(4.04 build 185)
 Add(ChildPanelRush,15601100,1449,448)
 {
  link(onMouseUp,16474015:doEvent1,[(1525,468)(1525,223)])
@@ -5488,7 +5488,7 @@ Add(MainForm,6186829,273,1232)
  Caption="Yuuko (V 0.5 - test)"
  BorderStyle=4
  Point(Close)
- link(onCreate,9075678:doEvent1,[])
+ link(onCreate,7629283:doLoad,[])
  link(Close,7990330:GetData,[])
 }
 Add(Button,2007823,896,567)
@@ -9109,7 +9109,7 @@ Add(StyleXP,3617989,273,1274)
 }
 Add(IndexToChanel,11222766,287,490)
 {
- Count=11
+ Count=12
  link(onEvent1,5371685:doWork1,[(387,496)(387,1133)])
  link(onEvent2,2553187:doExecute,[(424,503)(424,419)(591,419)(591,993)])
  link(onEvent3,5392655:doWork1,[(431,510)(431,461)(564,461)])
@@ -9119,6 +9119,9 @@ Add(IndexToChanel,11222766,287,490)
  link(onEvent7,6175395:doEvent2,[(415,538)(415,342)])
  link(onEvent8,1965110:doMessage,[(331,545)(331,580)(254,580)(254,615)])
  link(onEvent9,7177790:doShellExec,[(394,552)(394,713)])
+ link(onEvent10,9190943:doWork1,[(331,559)(331,1259)])
+ link(onEvent11,11869804:doShellExec,[(335,566)(335,706)])
+ link(onEvent12,1920160:doShellExec,[(335,573)(335,755)])
 }
 Add(ODialog,2553187,756,987)
 {
@@ -11368,8 +11371,8 @@ BEGIN_SDK
    Point(Index)
    link(onEvent1,11883111:doString,[])
    link(onEvent2,8396883:doString,[(520,545)(520,587)])
-   link(Index,14796400:Value,[(482,520)(503,520)(503,744)(524,744)])
    link(onEvent3,7384724:doString,[(520,552)(520,636)])
+   link(Index,14796400:Value,[(482,520)(503,520)(503,744)(524,744)])
   }
   Add(HubEx,2247518,581,532)
   {
@@ -11408,4 +11411,242 @@ Add(GetDataEx,7441032,2443,686)
 {
  Angle=3
  link(Data,11062201:Var3,[])
+}
+Add(MultiElementEx,7629283,420,1246)
+{
+ link(onLoad,9075678:doEvent1,[])
+}
+BEGIN_SDK
+  Add(EditMultiEx,6493711,21,21)
+  {
+   WorkCount=#6:doLoad|6:doSave|
+   EventCount=#6:onLoad|
+   Width=580
+   Height=333
+   link(doLoad,10047292:doStrCat,[(109,27)(109,132)])
+   link(doSave,283596:doEvent1,[(77,34)(77,202)])
+  }
+  Add(GlobalVar,7435246,308,70)
+  {
+   Name="BlockH"
+  }
+  Add(GlobalVar,13645977,392,70)
+  {
+   Name="BlockL"
+  }
+  Add(GlobalVar,15842356,469,70)
+  {
+   Name="BlockTab"
+  }
+  Add(GVarContainer,15907725,196,189)
+  {
+   Section="Blocks"
+   FilleName=".\settings.ini"
+   VarList=#6:BlockH|6:BlockL|8:BlockTab|
+   link(onLoad,2908129:doLoad,[(240,195)(240,223)])
+   link(FilaName,6863611:Var2,[])
+  }
+  Add(StrCat,10047292,196,126)
+  {
+   Str2="settings.ini"
+   link(onStrCat,15907725:doLoad,[(240,132)(240,164)(184,164)(184,195)])
+   link(Str1,9906184:Var2,[])
+  }
+  Add(Dir,11927660,196,77)
+  {
+  }
+  Add(GVarContainer,2908129,252,217)
+  {
+   Section="Ntf"
+   FilleName=".\settings.ini"
+   VarList=#3:Ntf|
+   link(onLoad,786287:doEvent,[])
+   link(FilaName,6863611:Var3,[(265,173)])
+  }
+  Add(GlobalVar,8838335,308,98)
+  {
+   Name="Ntf"
+   Data=Integer(1)
+  }
+  Add(GetDataEx,6863611,203,168)
+  {
+   Angle=3
+   link(Data,10047292:Result,[(202,173)])
+  }
+  Add(Hub,283596,133,196)
+  {
+   OutCount=3
+   link(onEvent2,2908129:doSave,[(183,209)(183,230)])
+   link(onEvent3,15907725:doSave,[(171,216)(171,202)])
+  }
+  Add(IndexToChanel,786287,308,217)
+  {
+   Point(Index)
+   link(onEvent1,9002340:doWork2,[])
+   link(onEvent2,5088223:doEvent1,[(348,230)(348,244)])
+   link(Index,8838335:Var,[])
+  }
+  Add(Hub,5088223,357,238)
+  {
+   link(onEvent1,9392647:doStrCat,[])
+   link(onEvent2,9002340:doWork3,[(442,251)])
+  }
+  Add(HubEx,9002340,438,217)
+  {
+   Angle=3
+   link(onEvent,6493711:onLoad,[(442,27)])
+  }
+  Add(WinExec,13426081,476,238)
+  {
+   RunEvent=1
+   link(FileName,9392647:Result,[(482,226)(444,226)(444,282)(405,282)])
+  }
+  Add(StrCat,9392647,399,238)
+  {
+   Str2="MonoNTF\NTF.exe"
+   link(onStrCat,13426081:doExec,[])
+   link(Str1,9906184:Var3,[(405,117)])
+  }
+  Add(GetDataEx,9906184,196,112)
+  {
+   link(Data,11927660:CurrentDir,[])
+  }
+  Add(Message,14440355,462,294)
+  {
+  }
+END_SDK
+Add(ChildForm,9190943,343,1253)
+{
+ link(onEvent1,11235452:doEvent1,[])
+}
+BEGIN_SDK
+  Add(EditMulti,3065754,21,21)
+  {
+   EventCount=1
+   WorkCount=1
+   Width=678
+   Height=515
+   link(doWork1,811511:doVisible,[(53,27)(53,139)])
+  }
+  Add(MainForm,811511,84,105)
+  {
+   Left=35
+   Top=105
+   Width=250
+   Height=209
+   Visible=1
+   Caption="Настройки"
+   Point(doVisible)
+   link(onCreate,5466512:doEvent1,[(160,125)(160,230)])
+  }
+  Add(GlobalVar,1184903,266,126)
+  {
+   Name="BlockH"
+  }
+  Add(GlobalVar,15238341,350,126)
+  {
+   Name="BlockL"
+  }
+  Add(GlobalVar,15845120,427,126)
+  {
+   Name="BlockTab"
+  }
+  Add(GlobalVar,4421433,273,245)
+  {
+   Name="Ntf"
+   Data=Integer(1)
+  }
+  Add(CheckBox,4927931,329,287)
+  {
+   Left=10
+   Top=105
+   Width=215
+   Caption="Следить за новостями"
+   link(onCheck,4421433:doValue,[(373,293)(373,272)(261,272)(261,251)])
+  }
+  Add(DoData,9819450,273,287)
+  {
+   link(onEventData,4927931:doCheck,[])
+   link(Data,4421433:Var,[])
+  }
+  Add(Button,13947255,462,399)
+  {
+   Left=10
+   Top=135
+   Width=85
+   Caption="Применить"
+   link(onClick,3065754:onEvent1,[(596,405)(596,27)])
+  }
+  Add(Button,11388027,462,441)
+  {
+   Left=140
+   Top=135
+   Width=85
+   Caption="Отменить"
+   link(onClick,5466512:doEvent2,[(506,447)(506,342)(191,342)(191,237)])
+  }
+  Add(Edit,10612916,266,161)
+  {
+   Left=175
+   Top=15
+   link(onChange,1184903:doValue,[(310,167)(310,149)(254,149)(254,132)])
+   link(Str,1184903:Var,[])
+  }
+  Add(Edit,6455172,350,161)
+  {
+   Left=175
+   Top=45
+   link(onChange,15238341:doValue,[(394,167)(394,149)(338,149)(338,132)])
+   link(Str,15238341:Var,[])
+  }
+  Add(Edit,5280280,427,161)
+  {
+   Left=175
+   Top=75
+   link(onChange,15845120:doValue,[(471,167)(471,149)(415,149)(415,132)])
+   link(Str,15845120:Var,[])
+  }
+  Add(Hub,5466512,203,224)
+  {
+   InCount=2
+   OutCount=4
+   link(onEvent1,10612916:doText,[(241,230)(241,167)])
+   link(onEvent2,6455172:doText,[(283,237)(283,167)])
+   link(onEvent3,5280280:doText,[(322,244)(322,167)])
+   link(onEvent4,9819450:doData,[(245,251)(245,293)])
+  }
+  Add(Label,4863523,210,56)
+  {
+   Left=10
+   Top=20
+   Width=120
+   Caption="Высота блоков, пикс."
+  }
+  Add(Label,11480334,259,56)
+  {
+   Left=10
+   Top=50
+   Width=115
+   Caption="Длина блоков, пикс."
+  }
+  Add(Label,3670424,308,56)
+  {
+   Left=10
+   Top=80
+   Width=160
+   Caption="Горизонтальный отступ, пикс."
+  }
+END_SDK
+Add(Hub,11235452,392,1253)
+{
+ link(onEvent1,7629283:doSave,[])
+ link(onEvent2,3536864:doEvent3,[(676,1266)(676,587)])
+}
+Add(WinExec,11869804,350,693)
+{
+ FileName=".\URL\help.html"
+}
+Add(WinExec,1920160,350,742)
+{
+ FileName=".\URL\about.html"
 }
