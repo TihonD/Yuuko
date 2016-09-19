@@ -1,0 +1,511 @@
+Make(delphi)
+ver(4.04 build 185)
+Add(MainForm,2953706,161,161)
+{
+ Width=363
+ Height=252
+ Color=16777215
+ Caption="Загрузка..."
+ BorderStyle=4
+ DragForm=0
+ link(onCreate,10047292:doStrCat,[])
+}
+Add(HTTP_Get,16338927,406,175)
+{
+ FileName="./channel.ntf"
+ link(onDownload,11595876:doEvent1,[])
+ link(URL,12206955:Var,[])
+ link(FileName,13005783:Var2,[])
+}
+Add(Edit,13802639,672,63)
+{
+ Left=10
+ Top=15
+ Width=330
+ Text="http://TihonD.ru/notifyer/1/default.ntf"
+}
+Add(RichEdit,12515269,525,161)
+{
+ Left=10
+ Top=45
+ Width=330
+ Height=110
+ FileName="./channel.ntf"
+ Point(FileName)
+ link(FileName,13005783:Var1,[(552,152)(419,152)])
+}
+Add(ArrayEnum,14441527,539,245)
+{
+ link(onItem,3259147:doCompare,[(583,251)(583,314)(289,314)(289,377)])
+ link(onEndEnum,4030396:doEvent,[(625,258)(625,338)(43,338)(43,482)])
+ link(Array,12515269:Array,[])
+}
+Add(Hub,11595876,469,182)
+{
+ OutCount=3
+ link(onEvent1,12515269:doLoad,[])
+ link(onEvent2,7377618:doWork1,[(532,195)(532,412)])
+ link(onEvent3,14441527:doEnum,[(511,202)(511,251)])
+}
+Add(StrMask,3259147,301,371)
+{
+ Mask="url*"
+ link(onFalse,14904289:doCompare,[])
+ link(onTrue,1064224:doSplit,[(341,384)(341,426)])
+}
+Add(MultiStrData,1064224,350,420)
+{
+ Char=" "
+ Count=1
+}
+Add(StrMask,14904289,350,371)
+{
+ Mask="message*"
+ link(onFalse,1522788:doCompare,[])
+ link(onTrue,4646718:doSplit,[(390,384)(390,426)])
+}
+Add(MultiStrData,4646718,399,420)
+{
+ Char=" "
+ Count=1
+}
+Add(StrCatDelim,8583154,350,476)
+{
+ Str2=".msg"
+ Point(Delimiter)
+ link(onStrCatDlm,8420817:doData,[])
+ link(Str1,2377739:Var2,[])
+ link(Delimiter,12614916:Var2,[])
+}
+Add(HTTP_Get,14033643,434,658)
+{
+ FileName="./last.msg"
+ link(onDownload,10189515:doEvent1,[])
+ link(URL,3082745:Value,[])
+ link(FileName,16186252:Var2,[])
+}
+Add(Hub,10189515,490,665)
+{
+ OutCount=4
+ link(onEvent1,542470:doLoad,[])
+ link(onEvent2,4345691:doClear,[(751,678)(751,790)])
+ link(onEvent3,4136507:doWork1,[(609,685)(609,566)])
+ link(onEvent4,2623398:doEnum,[(522,692)(522,713)])
+}
+Add(StrMask,10877107,581,707)
+{
+ Mask=">CLICK_URL*"
+ link(onFalse,12159030:doCompare,[(622,713)(622,783)])
+ link(onTrue,15143823:doEvent1,[])
+}
+Add(Hub,15143823,630,714)
+{
+ OutCount=4
+ link(onEvent1,3208605:doSplit,[])
+ link(onEvent3,7377618:doWork2,[(651,734)(651,419)])
+}
+Add(MultiStrData,3208605,672,714)
+{
+ Char=" "
+ link(onPart2,3717287:doEvent1,[])
+}
+Add(StrList,8639855,1337,686)
+{
+ FileName="./url_link.url"
+ Strings=#18:[InternetShortcut]|7:IDList=|
+ link(FileName,12714991:Result,[(1350,660)(1197,660)(1197,772)(1161,772)])
+}
+Add(Hub,10320943,1218,728)
+{
+ OutCount=3
+ link(onEvent1,2426604:doStrCat,[(1239,734)(1239,692)])
+ link(onEvent2,5148494:doData,[])
+ link(onEvent3,8639855:doSave,[(1309,748)(1309,727)])
+}
+Add(DoData,5148494,1246,735)
+{
+ Data=String()
+ link(onEventData,1699605:doWork3,[(1292,741)])
+}
+Add(StrCat,2426604,1246,686)
+{
+ Str1="URL="
+ link(onStrCat,1699605:doWork2,[])
+ link(Str2,6514245:Value,[(1259,674)(1129,674)(1129,772)(1077,772)])
+}
+Add(HubEx,1699605,1288,686)
+{
+ link(onEvent,8639855:doAdd,[])
+}
+Add(WinExec,7177790,1022,721)
+{
+ FileName=".\url_link.url"
+}
+Add(Label,15711690,924,721)
+{
+ Left=10
+ Top=170
+ Width=330
+ Color=16777215
+ Font=[MS Sans Serif,8,0,-16777203,1]
+ Caption=""
+ Point(onMouseUp)
+ link(onClick,3493712:doEvent,[])
+}
+Add(IndexToChanel,3493712,973,721)
+{
+ Point(Index)
+ link(onEvent2,7177790:doShellExec,[])
+ link(Index,8525282:Value,[(979,509)(713,509)])
+}
+Add(ChanelToIndex,7377618,658,406)
+{
+ Count=3
+ link(onIndex,8525282:doValue,[])
+}
+Add(Memory,8525282,707,406)
+{
+}
+Add(ArrayEnum,2623398,539,707)
+{
+ link(onItem,10877107:doCompare,[])
+ link(Array,542470:Array,[])
+}
+Add(Memory,6514245,1071,728)
+{
+ link(onData,12714991:doStrCat,[])
+}
+Add(Hub,3717287,714,721)
+{
+ link(onEvent1,9268471:doStrCat,[(738,727)(738,636)])
+ link(onEvent2,6514245:doValue,[])
+}
+Add(StrCat,9268471,749,630)
+{
+ Str1="Ссылка: "
+ link(onStrCat,710603:doEvent,[])
+}
+Add(StrMask,1522788,399,371)
+{
+ Mask="name*"
+ link(onFalse,15365830:doCompare,[(597,377)(597,209)])
+ link(onTrue,5457668:doSplit,[(439,384)(439,426)])
+}
+Add(MultiStrData,5457668,448,420)
+{
+ Char=" "
+ Count=1
+ link(onPart1,6170838:doData,[])
+}
+Add(DoData,6170838,490,420)
+{
+ link(onEventData,2953706:doCaption,[(534,426)(534,296)(138,296)(138,167)])
+ link(Data,5457668:RemaindStr,[(496,408)(475,408)(475,464)(454,464)])
+}
+Add(StrMask,12159030,651,777)
+{
+ Mask="*>CLICK_NAME*"
+ link(onFalse,4345691:doAdd,[])
+ link(onTrue,2371538:doSplit,[(688,790)(688,832)])
+}
+Add(MultiStrData,2371538,693,826)
+{
+ Char=" "
+ Count=1
+ link(onPart1,15736414:doData,[])
+}
+Add(DoData,15736414,735,826)
+{
+ link(onEventData,5086362:doEvent1,[])
+ link(Data,2371538:RemaindStr,[(741,814)(720,814)(720,870)(699,870)])
+}
+Add(Hub,5086362,777,826)
+{
+ link(onEvent1,4839726:doWork3,[(914,832)])
+ link(onEvent2,4136507:doWork2,[(803,839)(803,705)(725,705)(725,573)])
+}
+Add(HubEx,4839726,910,721)
+{
+ link(onEvent,15711690:doText,[])
+}
+Add(RichEdit,4345691,1022,777)
+{
+ Left=10
+ Top=15
+ Width=330
+ Height=140
+ FileName="./last.msg"
+ Strings=#29:Проверка наличия сообщений...|0:|110:Если у Вас нет соединения с Интернетом или загрузка происходит слишком долго - просто закройте это окно. ^__^ |
+ ScrollBars=2
+ ReadOnly=0
+ ParseLinks=0
+ Point(doDelete)
+ Point(onMouseUp)
+}
+Add(StrList,542470,525,637)
+{
+ FileName="./last.msg"
+ link(FileName,16186252:Var1,[(538,627)(447,627)])
+}
+Add(If_else,14159568,217,476)
+{
+ Type=2
+ Op2=Integer(0)
+ link(onTrue,6347792:doWork2,[])
+ link(onFalse,12962493:doWork2,[])
+ link(Op1,4702935:Var2,[])
+}
+Add(GetDataEx,12614916,364,459)
+{
+ Angle=1
+ link(Data,4646718:RemaindStr,[(405,464)])
+}
+Add(MultiStrData,6903902,840,273)
+{
+ Char=" "
+ Count=1
+}
+Add(StrMask,15365830,833,203)
+{
+ Mask="method*"
+ link(onTrue,12634879:doCompare,[(898,216)(898,258)])
+}
+Add(StrMask,12634879,931,252)
+{
+ Mask="*last*"
+ link(onFalse,3075361:doCompare,[])
+ link(onTrue,3803451:doWork1,[(993,265)(993,300)])
+}
+Add(StrMask,3075361,980,252)
+{
+ Mask="*unread*"
+ link(onFalse,4664628:doCompare,[])
+ link(onTrue,3803451:doWork2,[(1024,265)(1024,307)])
+}
+Add(GlobalVar,2410734,126,539)
+{
+ Name="last"
+ Data=Integer(0)
+}
+Add(GVarContainer,6419511,294,175)
+{
+ Section="monochannel"
+ FilleName="data.ini"
+ VarList=#6:ch_url|4:last|
+ link(onLoad,12660280:doStrCat,[])
+ link(FilaName,10047292:Result,[(307,163)(275,163)(275,219)(244,219)])
+}
+Add(GlobalVar,12206955,406,133)
+{
+ Name="ch_url"
+ Data=String(http://TihonD.ru/notifyer/1/default.ntf)
+}
+Add(ChanelToIndex,3803451,1113,294)
+{
+ Count=3
+ link(onIndex,8158132:doValue,[])
+}
+Add(GetIndexData,3670311,1295,294)
+{
+}
+Add(StrMask,4664628,1036,252)
+{
+ Mask="*all*"
+ link(onTrue,3803451:doWork3,[(1090,265)(1090,314)])
+}
+Add(IndexToChanel,4030396,63,476)
+{
+ Count=3
+ Point(Index)
+ link(onEvent1,14159568:doCompare,[])
+ link(onEvent2,11244592:doCompare,[(111,489)(111,587)])
+ link(onEvent3,6347792:doWork3,[(270,496)])
+ link(Index,8158132:Value,[(69,401)(1175,401)])
+}
+Add(Memory,8158132,1169,294)
+{
+}
+Add(If_else,11244592,119,581)
+{
+ Type=2
+ Op2=Integer(0)
+ link(onTrue,13474705:doCalc,[])
+ link(onFalse,12962493:doWork3,[(261,594)])
+ link(Op1,4702935:Var1,[(125,464)])
+ link(Op2,14783782:Var2,[])
+}
+Add(DoData,8420817,399,476)
+{
+ link(onEventData,3777126:doWork3,[(443,482)(443,568)])
+ link(Data,8583154:Result,[(405,471)(378,471)(378,520)(356,520)])
+}
+Add(Memory,3082745,434,574)
+{
+ link(onData,3639783:doStrCat,[(478,580)(478,622)(373,622)(373,664)])
+}
+Add(GetDataEx,4702935,217,459)
+{
+ Angle=1
+ link(Data,12614916:Var1,[])
+}
+Add(MathParse,13474705,175,581)
+{
+ MathStr="%1 + 1"
+ ResultType=0
+ link(onResult,13699084:doEvent1,[])
+ link(X1,957121:Var2,[])
+}
+Add(GetDataEx,14783782,126,560)
+{
+ link(Data,2410734:Var,[])
+}
+Add(StrCatDelim,2685653,294,539)
+{
+ Str2=".msg"
+ Point(Delimiter)
+ link(onStrCatDlm,1614866:doData,[])
+ link(Str1,2377739:Var1,[(300,467)])
+ link(Delimiter,957121:Var1,[(314,527)(181,527)])
+}
+Add(DoData,1614866,343,539)
+{
+ link(onEventData,3777126:doWork1,[(383,545)])
+ link(Data,2685653:Result,[(349,534)(322,534)(322,583)(300,583)])
+}
+Add(HubEx,3777126,379,562)
+{
+ Angle=1
+ link(onEvent,3082745:doValue,[(383,580)])
+}
+Add(GetDataEx,957121,175,560)
+{
+ Angle=3
+ link(Data,14783782:Var3,[])
+}
+Add(GetDataEx,2377739,350,462)
+{
+ link(Data,1064224:RemaindStr,[])
+}
+Add(HubEx,6347792,266,476)
+{
+ link(onEvent,8583154:doStrCatDlm,[])
+}
+Add(Hub,13699084,217,581)
+{
+ link(onEvent1,2410734:doValue,[(243,587)(243,566)(114,566)(114,545)])
+ link(onEvent2,2685653:doStrCatDlm,[(263,594)(263,545)])
+}
+Add(Message,7986029,1232,294)
+{
+}
+Add(HubEx,12962493,257,483)
+{
+ Angle=3
+ link(onEvent,7027053:doWork3,[(261,339)(149,339)])
+}
+Add(Button,13064711,42,182)
+{
+ Left=10
+ Top=195
+ Width=70
+ Caption="Закрыть"
+ link(onClick,7199063:doWork2,[])
+}
+Add(HubEx,7199063,145,182)
+{
+ link(onEvent,2953706:doClose,[])
+}
+Add(Button,8493887,42,224)
+{
+ Left=90
+ Top=195
+ Width=250
+ Caption="Пометить, как прочитанное, и закрыть"
+ link(onClick,6557545:doEvent1,[])
+}
+Add(Hub,6557545,98,224)
+{
+ link(onEvent1,6419511:doSave,[(214,230)(214,188)])
+ link(onEvent2,7027053:doWork2,[])
+}
+Add(HubEx,7027053,145,231)
+{
+ Angle=3
+ link(onEvent,7199063:doWork3,[])
+}
+Add(Charset,6575495,105,119)
+{
+ Type=3
+}
+Add(StyleXP,13146857,161,119)
+{
+}
+Add(IndexToChanel,710603,798,630)
+{
+ Point(Index)
+ link(onEvent1,11556263:doData,[])
+ link(Index,12106096:Value,[])
+}
+Add(DoData,11556263,847,630)
+{
+ link(onEventData,4839726:doWork2,[(895,636)(895,727)])
+ link(Data,9268471:Result,[(853,618)(818,618)(818,678)(755,678)])
+}
+Add(ChanelToIndex,4136507,749,560)
+{
+ Count=3
+ link(onIndex,12106096:doValue,[])
+}
+Add(Memory,12106096,798,560)
+{
+}
+Add(StrCat,10047292,238,175)
+{
+ Str2="data.ini"
+ link(onStrCat,6419511:doLoad,[])
+ link(Str1,13617940:Var2,[])
+}
+Add(Dir,11927660,238,70)
+{
+}
+Add(StrCat,12660280,350,175)
+{
+ Str2="channel.ntf"
+ link(onStrCat,16338927:doDownload,[])
+ link(Str1,12424297:Var2,[])
+}
+Add(GetDataEx,13617940,238,119)
+{
+ link(Data,11927660:CurrentDir,[])
+}
+Add(GetDataEx,13005783,413,158)
+{
+ Angle=3
+ link(Data,12660280:Result,[(387,163)(387,219)(356,219)])
+}
+Add(StrCat,3639783,385,658)
+{
+ Str2="last.msg"
+ link(onStrCat,14033643:doDownload,[])
+ link(Str1,9453968:Var2,[])
+}
+Add(GetDataEx,16186252,441,641)
+{
+ Angle=3
+ link(Data,3639783:Result,[(419,646)(419,702)(391,702)])
+}
+Add(GetDataEx,12424297,350,119)
+{
+ Angle=3
+ link(Data,13617940:Var3,[])
+}
+Add(StrCat,12714991,1155,728)
+{
+ Str2="url_link.url"
+ link(onStrCat,10320943:doEvent1,[])
+ link(Str1,9453968:Var3,[(1161,523)])
+}
+Add(GetDataEx,9453968,385,518)
+{
+ link(Data,12424297:Var3,[(391,124)])
+}
