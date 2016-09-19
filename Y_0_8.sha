@@ -223,18 +223,18 @@ BEGIN_SDK
   }
   Add(PointXY,4582250,1148,651)
   {
-   link(X,16561226:Value,[])
+   link(X,1815817:Result,[(1154,639)(1070,639)(1070,765)(986,765)])
    link(Y,12405265:Result,[(1161,597)(1123,597)(1123,801)(937,801)])
   }
-  Add(Memory,16561226,1148,525)
+  Add(Memory,16561226,987,658)
   {
-   Default=Integer(420)
+   Default=Integer(50)
   }
   Add(MathParse,12405265,931,721)
   {
    MathStr="(%1)*(%2+5)+2.5"
    ResultType=0
-   link(onResult,14171453:doFor,[])
+   link(onResult,1815817:doOperation,[])
    link(X1,13838812:Var3,[(937,394)])
    link(X2,4188041:Var2,[])
   }
@@ -252,13 +252,13 @@ BEGIN_SDK
   Add(PointXY,15736549,1197,651)
   {
    link(X,11809329:Value,[])
-   link(Y,14171453:Position,[(1210,621)(1076,621)(1076,765)(1014,765)])
+   link(Y,14171453:Position,[(1210,639)(1122,639)(1122,765)(1035,765)])
   }
   Add(Memory,11809329,1197,525)
   {
    Default=Integer(20)
   }
-  Add(For,14171453,1008,721)
+  Add(For,14171453,1029,721)
   {
    Start=-5
    End=5
@@ -396,6 +396,16 @@ BEGIN_SDK
   {
    link(onEvent1,10930486:doWork1,[])
    link(onEvent2,5638635:doWork1,[(750,62)(750,118)])
+  }
+  Add(Math,1815817,980,721)
+  {
+   link(onResult,14171453:doFor,[])
+   link(Op1,5125761:Var,[])
+   link(Op2,16561226:Value,[])
+  }
+  Add(GlobalVar,5125761,980,630)
+  {
+   Name="BlockL"
   }
 END_SDK
 Add(Edit,9861362,567,77)
@@ -581,7 +591,7 @@ BEGIN_SDK
      Left=75
      Top=15
      Width=455
-     Text="0"
+     Text=""
      link(onChange,15626654:doWork2,[])
     }
     Add(FormatStr,15923484,448,203)
@@ -3446,7 +3456,7 @@ BEGIN_SDK
     {
      Left=260
      Top=15
-     Text="0"
+     Text=""
      link(onChange,2700468:doWork2,[])
     }
     Add(FormatStr,15923484,847,385)
@@ -3801,7 +3811,7 @@ BEGIN_SDK
     {
      Left=260
      Top=140
-     Text="0"
+     Text=""
      Point(onKillFocus)
      link(onChange,5041439:doEvent1,[])
     }
@@ -6699,7 +6709,7 @@ BEGIN_SDK
      Left=170
      Top=15
      Width=360
-     Text="0"
+     Text=""
      Point(onMouseUp)
      Point(onKillFocus)
      link(onChange,16075568:doWork2,[(628,391)(628,398)])
@@ -6947,7 +6957,7 @@ BEGIN_SDK
      Left=170
      Top=110
      Width=385
-     Text="0"
+     Text=""
      Point(onMouseUp)
      Point(onKillFocus)
      link(onChange,16075568:doWork4,[(628,622)(628,412)])
@@ -7056,7 +7066,7 @@ BEGIN_SDK
      Left=170
      Top=145
      Width=385
-     Text="0"
+     Text=""
      Point(onMouseUp)
      Point(onKillFocus)
      link(onChange,16075568:doWork5,[(625,713)(625,419)])
@@ -10340,6 +10350,7 @@ BEGIN_SDK
     {
      Left=425
      Top=40
+     Visible=1
      Caption="flash"
      link(onCheck,13683754:doWork2,[])
     }
@@ -10351,6 +10362,7 @@ BEGIN_SDK
     {
      Left=425
      Top=65
+     Visible=1
      Caption="eeprom"
      link(onCheck,16178220:doWork2,[])
     }
@@ -10666,6 +10678,7 @@ BEGIN_SDK
      Left=80
      Top=70
      Width=155
+     Text=""
      link(onChange,14786357:doWork2,[])
     }
     Add(Replace,14577420,77,742)
@@ -10685,6 +10698,7 @@ BEGIN_SDK
      Left=80
      Top=95
      Width=270
+     Text=""
      link(onChange,9116702:doWork2,[])
     }
     Add(MultiStrData,5102796,532,791)
@@ -10726,6 +10740,7 @@ BEGIN_SDK
      Left=310
      Top=70
      Width=40
+     Text=""
      link(onChange,8782996:doWork2,[])
     }
     Add(StrMask,211666,448,742)
@@ -11216,7 +11231,7 @@ BEGIN_SDK
      Left=10
      Top=40
      Width=550
-     Text="0"
+     Text=""
      link(onChange,15626654:doWork2,[])
      link(Str,15970683:RemaindStr,[(321,191)(300,191)(300,247)(279,247)])
     }
@@ -11318,7 +11333,7 @@ BEGIN_SDK
      Left=170
      Top=15
      Width=360
-     Text="0"
+     Text=""
      link(onChange,8229812:doEvent1,[])
     }
     Add(FormatStr,15923484,931,245)
@@ -11552,7 +11567,7 @@ BEGIN_SDK
      Left=170
      Top=50
      Width=360
-     Text="0"
+     Text=""
      link(onChange,16075568:doWork4,[(688,482)(688,272)])
     }
     Add(GetDataEx,9418335,504,203)
@@ -11641,7 +11656,7 @@ BEGIN_SDK
      Top=145
      Width=385
      Visible=1
-     Text="0"
+     Text=""
      link(onChange,16075568:doWork5,[(684,573)(684,279)])
      link(Str,4262323:RemaindStr,[(622,555)(571,555)(571,607)(524,607)])
     }
@@ -14843,7 +14858,7 @@ BEGIN_SDK
      Left=170
      Top=15
      Width=360
-     Text="0"
+     Text=""
      link(onChange,16075568:doWork2,[(628,391)(628,398)])
     }
     Add(FormatStr,15923484,847,385)
@@ -15085,7 +15100,7 @@ BEGIN_SDK
      Left=225
      Top=105
      Width=100
-     Text="0"
+     Text=""
      link(onChange,16075568:doWork4,[(628,622)(628,412)])
     }
     Add(GetDataEx,9418335,469,347)
@@ -15180,7 +15195,7 @@ BEGIN_SDK
      Left=170
      Top=145
      Width=360
-     Text="0"
+     Text=""
      link(onChange,16075568:doWork5,[(625,713)(625,419)])
     }
     Add(MultiStrData,4262323,336,672)
@@ -20780,7 +20795,7 @@ BEGIN_SDK
      Left=10
      Top=15
      Width=520
-     Text="0"
+     Text=""
      link(onChange,14609608:doWork2,[])
     }
     Add(MultiStrData,4262323,336,672)
@@ -23477,7 +23492,7 @@ BEGIN_SDK
      Left=160
      Top=45
      Width=95
-     Text="0"
+     Text=""
      link(onChange,14609608:doWork1,[(746,454)])
     }
     Add(Label,3976553,560,385)
