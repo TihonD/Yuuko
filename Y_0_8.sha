@@ -14769,7 +14769,7 @@ BEGIN_SDK
   Add(StrMask,15549411,637,1162)
   {
    Mask="*continue*"
-   link(onFalse,15903343:doCompare,[(681,1168)(681,1189)(625,1189)(625,1210)])
+   link(onFalse,13416683:doCompare,[(681,1168)(681,1199)(583,1199)(583,1336)])
    link(onTrue,3642956:doEvent4,[(674,1175)(674,1049)])
    link(Str,163187:Var3,[(643,1156)])
   }
@@ -14815,7 +14815,7 @@ BEGIN_SDK
   Add(StrMask,3550699,637,1288)
   {
    Mask="*Serial*"
-   link(onFalse,13416683:doCompare,[(681,1294)(681,1315)(625,1315)(625,1336)])
+   link(onFalse,11220758:doValue,[(681,1294)(681,1108)(485,1108)(485,923)])
    link(onTrue,8760484:doEvent3,[(674,1301)(674,1231)])
    link(Str,12898659:Var3,[(643,1282)])
   }
@@ -20726,7 +20726,7 @@ BEGIN_SDK
   Add(StrMask,13416683,637,1330)
   {
    Mask="* = *"
-   link(onFalse,11220758:doValue,[(681,1336)(681,1373)(478,1373)(478,923)])
+   link(onFalse,15903343:doCompare,[(681,1336)(681,1273)(625,1273)(625,1210)])
    link(onTrue,9397188:doEvent1,[])
    link(Str,12898659:Var2,[(643,1325)(608,1325)])
   }
@@ -27089,7 +27089,7 @@ BEGIN_SDK
   }
   Add(FormatStr,11883111,567,532)
   {
-   Mask="%1;"
+   Mask="Переменная %1"
    link(onFString,12752962:doValue,[])
    link(Str1,3769922:Value,[(573,502)(335,502)])
   }
@@ -29307,7 +29307,7 @@ END_SDK
 Add(StrMask,15577501,2366,714)
 {
  Mask="*RandomSeed*"
- link(onFalse,16529961:doCompare,[])
+ link(onFalse,6214189:doCompare,[(2410,720)(2410,713)])
  link(onTrue,9006603:doWork1,[(2406,727)(2406,846)])
  link(Str,15952511:Var2,[])
 }
@@ -29356,9 +29356,10 @@ BEGIN_SDK
   }
   Add(Img_Rectangle,5024875,539,455)
   {
+   Size=3
    rX=10
    rY=10
-   Color=15793151
+   Color=16711680
    BgColor=15793151
    Style=1
    Point(Point1)
@@ -29645,11 +29646,11 @@ BEGIN_SDK
     }
   END_SDK
 END_SDK
-Add(StrMask,16529961,2443,714)
+Add(StrMask,16529961,2443,728)
 {
  Mask="*Serial*"
- link(onFalse,6214189:doCompare,[])
- link(onTrue,5974629:doWork1,[(2483,727)(2483,853)])
+ link(onFalse,6710229:doWork1,[(2602,734)(2602,720)])
+ link(onTrue,5974629:doWork1,[(2483,741)(2483,853)])
  link(Str,7441032:Var2,[])
 }
 Add(GetDataEx,5591073,2415,644)
@@ -30033,7 +30034,7 @@ BEGIN_SDK
    DataCount=2
    Width=1245
    Height=592
-   link(doWork1,3752831:doEvent1,[(196,27)(196,447)])
+   link(doWork1,5163929:doReplace,[(35,27)(35,356)])
   }
   Add(MultiStrData,1473755,231,497)
   {
@@ -30140,7 +30141,7 @@ BEGIN_SDK
    Point(Y)
    link(onDraw,11863097:doWork3,[(793,538)])
    link(Bitmap,16378022:Var2,[])
-   link(Text,14806742:Data2,[(762,276)(34,276)])
+   link(Text,12095667:Value,[(762,429)(440,429)])
    link(X,10639839:Result,[(769,520)(717,520)(717,576)(664,576)])
    link(Y,9674025:Result,[(776,520)(741,520)(741,576)(706,576)])
   }
@@ -30416,12 +30417,65 @@ BEGIN_SDK
      link(Data,7034949:RemaindStr,[(251,79)(227,79)(227,135)(202,135)])
     }
   END_SDK
+  Add(Replace,5163929,42,350)
+  {
+   SubStr="millis()"
+   DestStr="милисекунды"
+   link(onReplace,10422760:doReplace,[])
+   link(Str,14806742:Data2,[(48,186)(34,186)])
+  }
+  Add(Replace,10422760,91,350)
+  {
+   SubStr="micros()"
+   DestStr="микросекунды"
+   link(onReplace,1063319:doReplace,[])
+  }
+  Add(Replace,1063319,140,350)
+  {
+   SubStr="random()"
+   DestStr="случайное число"
+   link(onReplace,14360519:doReplace,[])
+  }
+  Add(Memory,12095667,434,350)
+  {
+   link(onData,3752831:doEvent1,[(478,356)(478,402)(359,402)(359,447)])
+  }
+  Add(Replace,14360519,189,350)
+  {
+   SubStr="Serial.read()"
+   DestStr="чтение USART"
+   link(onReplace,1328318:doReplace,[])
+  }
+  Add(Replace,1328318,238,350)
+  {
+   SubStr="Serial.peak()"
+   DestStr="просмотр USART"
+   link(onReplace,12586356:doReplace,[])
+  }
+  Add(Replace,12586356,287,350)
+  {
+   SubStr="digitalRead"
+   DestStr="линия порта "
+   link(onReplace,3332215:doReplace,[])
+  }
+  Add(Replace,3332215,336,350)
+  {
+   SubStr="analogRead"
+   DestStr="канал АЦП "
+   link(onReplace,12582091:doDelete,[])
+  }
+  Add(Delete,12582091,385,350)
+  {
+   Count=1
+   Direction=1
+   link(onDelete,12095667:doValue,[])
+  }
 END_SDK
-Add(StrMask,6214189,2527,714)
+Add(StrMask,6214189,2527,707)
 {
  Mask="* = *"
- link(onFalse,6710229:doWork1,[])
- link(onTrue,7697073:doWork1,[(2567,727)(2567,860)])
+ link(onFalse,16529961:doCompare,[(2571,713)(2571,700)(2432,700)(2432,734)])
+ link(onTrue,7697073:doWork1,[(2567,720)(2567,860)])
  link(Str,5025661:Var2,[])
 }
 Add(GetDataEx,10761765,2499,686)
