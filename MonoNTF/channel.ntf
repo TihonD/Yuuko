@@ -1,7 +1,7 @@
 ntfv 1
 ntf_renew http://TihonD.RU/notifyer/download.php
 ntf_reload http://TihonD.RU/notifyer/reload/reload_v1.rld
-message 1
+message 0
 url http://TihonD.RU/notifyer/2/
 name EducationRobots.RU
 method unread

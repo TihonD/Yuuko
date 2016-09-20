@@ -5,7 +5,6 @@ Add(ChildPanelRush,15601100,1449,448)
  link(onMouseUp,16474015:doEvent1,[(1525,468)(1525,223)])
  link(onEvent1,2137584:doEvent1,[])
  link(Redraw,3536864:doEvent5,[(1493,489)(1493,545)(933,545)(933,601)])
- link(onMouseEnter,3536864:doEvent6,[(1493,503)(1493,555)(933,555)(933,608)])
 }
 BEGIN_SDK
   Add(EditMultiEx,14830881,21,21)
@@ -437,10 +436,12 @@ Add(HilightMemo,10640481,770,189)
  Point(onMouseUp)
  Point(CanUndo)
  Point(CanRedo)
+ Point(onMouseLeave)
  link(onChange,3574833:doWork1,[(900,195)])
  link(Str,3281080:Var,[])
  link(FileName,12043422:Var,[(783,171)(853,171)])
  link(onMouseUp,1831649:doEvent1,[(828,202)(828,342)])
+ link(onMouseLeave,3536864:doEvent7,[(880,209)(880,615)])
 }
 Add(Edit,1098780,770,63)
 {
@@ -24248,7 +24249,7 @@ Add(MainForm,6186829,273,1232)
  Width=1200
  Height=649
  Color=16777215
- Caption="Yuuko (V 0.5 - test)"
+ Caption="Yuuko 0.99"
  BorderStyle=1
  Point(Close)
  link(onCreate,7629283:doLoad,[])
@@ -24277,7 +24278,7 @@ Add(DoData,1340548,1015,462)
 }
 Add(Hub,3536864,945,567)
 {
- InCount=6
+ InCount=7
  OutCount=4
  link(onEvent1,1340548:doData,[(987,573)(987,468)])
  link(onEvent2,15601100:doClear,[(1204,580)(1204,461)])
@@ -28070,7 +28071,7 @@ Add(FilePartElm,3820531,1078,1050)
 Add(GlobalVar,12225034,1176,987)
 {
  Name="Version"
- Data=String(0.8)
+ Data=String(0.99)
 }
 Add(GlobalVar,13594616,1078,1008)
 {
