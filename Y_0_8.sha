@@ -37,7 +37,7 @@ BEGIN_SDK
   Add(PaintBox,9426546,385,154)
   {
    Width=675
-   Height=1600
+   Height=2600
    Align=1
    Color=12639424
    Point(doColor)
@@ -70,7 +70,7 @@ BEGIN_SDK
    Width=15
    Height=561
    Align=3
-   Max=1000
+   Max=2000
    Page=25
    Kind=1
    Point(doMax)
