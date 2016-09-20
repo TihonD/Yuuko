@@ -1,7 +1,4 @@
-Доступно обновление.
-Выпущена версия 1.1.
-Добавлены новые блоки.
-Расширен функционал.
-Больше параметров стали настраиваемыми.
->CLICK_NAME Подробнее: http://TihonD.RU/534735dcjhm3545241/
->CLICK_URL http://TihonD.RU/534735dcjhm3545241/
+Обновление раздела образцов программ.
+В раздел добавлены новые образцы. Также этот раздел будет обновляться и в дальнейшем. ^__^
+>CLICK_NAME Подробнее: http://TihonD.RU/Yuuko_code_editor/examples.php
+>CLICK_URL http://TihonD.RU/Yuuko_code_editor/examples.php
