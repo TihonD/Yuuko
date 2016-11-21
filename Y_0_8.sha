@@ -3844,7 +3844,7 @@ BEGIN_SDK
     }
     Add(FormatStr,8656199,847,735)
     {
-     Mask="AnalogWrite(%1,%2);"
+     Mask="analogWrite(%1,%2);"
      link(onFString,923977:doWork3,[(894,741)])
      link(Str1,9172751:Var2,[(853,687)(619,687)])
      link(Str2,6407755:Var2,[])
@@ -3858,7 +3858,7 @@ BEGIN_SDK
     {
      Left=15
      Top=140
-     Width=130
+     Width=125
      Caption="ÿ»Ã"
      link(onSelect,12398189:doEvent1,[])
     }
@@ -3931,7 +3931,7 @@ BEGIN_SDK
     {
      OutCount=3
      link(onEvent1,16678844:doSplit,[(362,482)(362,636)(310,636)(310,790)])
-     link(onEvent2,823657:doSelect,[(522,489)(522,790)(522,790)])
+     link(onEvent2,823657:doSelect,[(522,489)(522,790)])
      link(onEvent3,10372877:doWork2,[])
     }
     Add(GetDataEx,14158050,322,347)
@@ -31240,8 +31240,8 @@ BEGIN_SDK
    EventCount=1
    WorkCount=2
    DataCount=1
-   Width=1231
-   Height=669
+   Width=1623
+   Height=858
    link(doWork1,3285862:doEvent1,[(45,27)(45,258)])
    link(doWork2,12613610:doEvent1,[(77,34)(77,69)])
   }
@@ -31253,7 +31253,6 @@ BEGIN_SDK
   {
    InCount=2
    OutCount=4
-   link(onEvent1,6314384:doStrCat,[(245,258)(245,132)])
    link(onEvent2,2623011:doClear,[(326,265)(326,216)])
    link(onEvent3,3365859:doEnum,[(298,272)(298,328)])
    link(onEvent4,2623011:doSave,[(326,279)(326,244)])
@@ -31266,28 +31265,29 @@ BEGIN_SDK
   Add(StrCat,6314384,448,126)
   {
    Str2="Yuuko\Yuuko.ino"
-   link(Str1,13699634:CurrentDir,[])
+   link(Str1,13699634:TempDir,[(454,118)(440,118)])
   }
-  Add(Dir,13699634,448,77)
+  Add(Dir,13699634,420,77)
   {
+   Point(MyDocumentDir)
   }
   Add(WinExec,3358562,343,392)
   {
    FileName=".\url_link.url"
-   link(FileName,1151266:Var2,[])
+   link(FileName,1441186:Var2,[])
   }
   Add(Hub,3285862,70,252)
   {
-   link(onEvent1,3488903:doEvent1,[])
-   link(onEvent2,9709335:doCompare,[(147,265)(147,405)])
+   link(onEvent1,3355768:doEvent1,[])
+   link(onEvent2,12735799:doStrCatDlm,[(98,265)(98,405)])
   }
   Add(GetDataEx,10627547,448,168)
   {
-   link(Data,6314384:Result,[])
+   link(Data,7192812:TempFName,[(454,163)(384,163)])
   }
-  Add(Hub,12613610,133,63)
+  Add(Hub,12613610,91,63)
   {
-   link(onEvent1,3488903:doEvent2,[(171,69)(171,265)])
+   link(onEvent1,3355768:doEvent2,[(133,69)(133,265)])
    link(onEvent2,3018192:onEvent1,[(699,76)(699,27)])
   }
   Add(GlobalVar,15785689,210,343)
@@ -31298,22 +31298,134 @@ BEGIN_SDK
   {
    Op2=Integer(0)
    link(onTrue,3358562:doShellExec,[])
-   link(onFalse,12270640:doExec,[(258,412)(258,461)])
+   link(onFalse,12270640:doExec,[(258,412)(258,482)])
    link(Op1,10986273:Var2,[])
   }
-  Add(WinExec,12270640,273,455)
+  Add(WinExec,12270640,273,476)
   {
    FileName=".\url_link.url"
-   link(FileName,10986273:Var3,[(279,369)])
-   link(Params,1151266:Var1,[(286,369)])
-  }
-  Add(GetDataEx,1151266,343,364)
-  {
-   link(Data,10627547:Var1,[(349,173)])
+   link(FileName,12735799:Result,[(279,454)(118,454)])
+   link(Params,5228604:Result,[(286,443)(167,443)])
   }
   Add(GetDataEx,10986273,210,364)
   {
    link(Data,15785689:Var,[])
+  }
+  Add(StrCatDelim,12735799,112,399)
+  {
+   Str1="""
+   Str2="""
+   Point(Delimiter)
+   link(onStrCatDlm,5228604:doStrCatDlm,[])
+   link(Delimiter,10986273:Var1,[(132,369)])
+  }
+  Add(StrCatDelim,5228604,161,399)
+  {
+   Str1="""
+   Str2="""
+   Point(Delimiter)
+   link(onStrCatDlm,9709335:doCompare,[])
+   link(Delimiter,1441186:Var1,[(181,376)])
+  }
+  Add(GetDataEx,1441186,343,371)
+  {
+   link(Data,10627547:Var1,[(349,173)])
+  }
+  Add(FileTools,4307538,504,126)
+  {
+   link(onEnd,15012103:doEvent,[])
+   link(FileName,7856055:Var2,[])
+  }
+  Add(IndexToChanel,15012103,560,126)
+  {
+   link(onEvent1,3020825:doStrCat,[])
+  }
+  Add(StrCat,8692460,1036,126)
+  {
+   Str2="Yuuko\Yuuko.ino"
+   link(onStrCat,13448738:doCopy,[(1080,132)(1080,139)])
+   link(Str1,15694681:CurrentDir,[])
+  }
+  Add(Dir,15694681,1036,77)
+  {
+   Point(MyDocumentDir)
+  }
+  Add(FileTools,13448738,1092,126)
+  {
+   link(FileName,8692460:Result,[(1098,114)(1070,114)(1070,170)(1042,170)])
+   link(NewFileName,7856055:Var3,[(1105,105)(1105,105)])
+  }
+  Add(GetDataEx,7856055,504,100)
+  {
+   Angle=3
+   link(Data,10627547:Var3,[(483,105)(483,173)])
+  }
+  Add(DirTools,2698293,672,126)
+  {
+   Point(doExists)
+   link(onOK,358829:doEvent,[])
+   link(Source,8455844:Var2,[])
+  }
+  Add(IndexToChanel,358829,728,126)
+  {
+   link(onEvent1,14092189:doDir,[(772,132)(772,108)(576,108)(576,83)])
+   link(onEvent2,5663101:doWork3,[(831,139)])
+  }
+  Add(StrCat,3020825,616,126)
+  {
+   Str2="Yuuko"
+   link(onStrCat,2698293:doExists,[(660,132)(660,153)])
+   link(Str1,14092189:MyDocumentDir,[])
+  }
+  Add(Dir,14092189,588,77)
+  {
+   Point(MyDocumentDir)
+   Point(Dir)
+   link(onEnd,5663101:doWork1,[(831,83)])
+   link(Dir,10260382:Var2,[(594,65)(650,65)])
+  }
+  Add(StrCat,11041315,889,168)
+  {
+   Str2="Yuuko\"
+   link(onStrCat,9853544:doCopy,[])
+   link(Str1,8740741:CurrentDir,[])
+  }
+  Add(Dir,8740741,889,77)
+  {
+   Point(MyDocumentDir)
+  }
+  Add(DirTools,9853544,945,168)
+  {
+   link(Source,11041315:Result,[(951,114)(923,114)(923,205)(895,205)])
+   link(Dest,8455844:Var3,[(958,96)])
+  }
+  Add(GetDataEx,8455844,672,91)
+  {
+   Angle=3
+   link(Data,10260382:Var3,[])
+  }
+  Add(Message,9037490,1001,210)
+  {
+  }
+  Add(GetDataEx,10260382,644,91)
+  {
+   Angle=2
+   link(Data,3020825:Result,[(650,170)(622,170)])
+  }
+  Add(HubEx,5663101,827,126)
+  {
+   link(onEvent,8692460:doStrCat,[])
+  }
+  Add(TempFileStream,7192812,378,126)
+  {
+   Stream=[ZIP4201000078DA4D4FC18E823014BC37E94FF801AC05DAE2A11744E2C13D49628CF150E52D365BDAA414CDFEFD166A76B9BD99376F66DE656BCD97EAAE181DBDF4CA9A5A6910ABE4A381C127463E57181DAC6CB7565B37D4CEF64BDD1AA30A6E63B733826084D1657F827ED4D25B171CFFC11E54F7F082F0F5926D8E82B099792AE70791A5B347E5E44B99A952D9CDB1A2C85392718651ED640F910B77E538FC4490E661F91967C238E729A118354EDEBF4FAAF50F41E37F10511632F59F9A904D46276F785BE794B202A333686D5F9162944E9A528FB0B8634568F10B180761C0]
+   Extention=".ino"
+   link(onCreate,3488903:doEvent2,[(422,132)(422,198)(184,198)(184,265)])
+  }
+  Add(Hub,3355768,161,252)
+  {
+   InCount=2
+   link(onEvent1,7192812:doCreate,[(277,258)(277,132)])
   }
 END_SDK
 Add(GetDataEx,12170778,322,798)
